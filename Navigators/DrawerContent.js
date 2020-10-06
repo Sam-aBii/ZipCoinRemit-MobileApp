@@ -4,17 +4,12 @@ import {
   Avatar,
   Title,
   Caption,
-  Paragraph,
   Drawer,
-  Text,
-  TouchableRipple,
-  Switch,
 } from "react-native-paper";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 
-import KycProcess from "../Screens/KycProcess";
 
 
 
@@ -55,7 +50,7 @@ export function DrawerContent(props) {
                   size={size}
                 />
               )}
-              label="Kyc Process"
+              label="KYC Process"
               onPress={() => {props.navigation.navigate('KycProcessScreen')}}
               />
             <DrawerItem
@@ -67,7 +62,7 @@ export function DrawerContent(props) {
                 />
               )}
               label="Send Food"
-              onPress={() => {}}
+              onPress={() => {props.navigation.navigate('SendFoodScreen')}}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -78,7 +73,7 @@ export function DrawerContent(props) {
                 />
               )}
               label="Transcations"
-              onPress={() => {}}
+              onPress={() => {props.navigation.navigate('TranscationsScreen')}}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -89,7 +84,7 @@ export function DrawerContent(props) {
                 />
               )}
               label="Customers"
-              onPress={() => {}}
+              onPress={() => {props.navigation.navigate('CustomerScreen')}}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -100,7 +95,7 @@ export function DrawerContent(props) {
                 />
               )}
               label="Payments"
-              onPress={() => {}}
+              onPress={() => {props.navigation.navigate('PaymentScreen')}}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -111,7 +106,7 @@ export function DrawerContent(props) {
                 />
               )}
               label="Beneficiaries"
-              onPress={() => {}}
+              onPress={() => {props.navigation.navigate('BeneficiarieScreen')}}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -122,7 +117,7 @@ export function DrawerContent(props) {
                 />
               )}
               label="Refer & Earn"
-              onPress={() => {}}
+              onPress={() => {props.navigation.navigate('ReferAndEarnScreen')}}
             />
           </Drawer.Section>
         </View>

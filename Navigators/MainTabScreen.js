@@ -14,6 +14,7 @@ import AirTimeTopScreen from "../Screens/AirTimeTopUp";
 const HomeStack = createStackNavigator();
 const SettingStack = createStackNavigator();
 const SendMoneyStack = createStackNavigator();
+const AirTimeTopStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
@@ -45,7 +46,7 @@ const MainTabScreen = () => (
     />
     <Tab.Screen
       name="AirTime Top Up"
-      component={AirTimeTopScreen}
+      component={AirTimeTopStackScreen}
       options={{
         tabBarLabel: "AirTime TopUp",
         tabBarColor: "#dba84e",
@@ -149,8 +150,8 @@ const SendMoneyStackScreen = ({ navigation }) => (
   </SendMoneyStack.Navigator>
 );
 
-const KycProcessStackScreen = ({ navigation }) => (
-    <KycProcessStack.Navigator
+const AirTimeTopStackScreen = ({ navigation }) => (
+    <AirTimeTopStack.Navigator
       screenOptions={{
         headerStyle: {
           backgroundColor: "#dba84e",
@@ -158,9 +159,9 @@ const KycProcessStackScreen = ({ navigation }) => (
         headerTintColor: "#fff",
       }}
     >
-      <KycProcessStack.Screen
-        name="Kyc Process"
-        component={KycProcessScreen}
+      <AirTimeTopStack.Screen
+        name="AirTime Top Up"
+        component={AirTimeTopScreen}
         options={{
           headerLeft: () => (
             <Icon.Button
@@ -172,5 +173,7 @@ const KycProcessStackScreen = ({ navigation }) => (
           ),
         }}
       />
-    </KycProcessStack.Navigator>
+    </AirTimeTopStack.Navigator>
   );
+  
+  
