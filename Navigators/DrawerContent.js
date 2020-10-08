@@ -42,6 +42,17 @@ export function DrawerContent(props) {
           </View>
 
           <Drawer.Section style={styles.drawerSection}>
+          <DrawerItem
+              icon={({ color, size }) => (
+                <MaterialCommunityIcons
+                  name="home"
+                  color={color}
+                  size={size}
+                />
+              )}
+              label="Home"
+              onPress={() => {props.navigation.navigate('Dashboard')}}
+              />
             <DrawerItem
               icon={({ color, size }) => (
                 <MaterialCommunityIcons

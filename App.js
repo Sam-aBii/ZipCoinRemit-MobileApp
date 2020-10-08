@@ -4,6 +4,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import MainTabScreen from "./Navigators/MainTabScreen";
 import {DrawerContent} from "./Navigators/DrawerContent"
 
+import RootStackScreen from "./Navigators/RootStackScreen"
 const Drawer = createDrawerNavigator();
 
 import KycProcessScreen from "./Screens/KycProcess";
@@ -15,10 +16,11 @@ import BeneficiarieScreen from "./Screens/Beneficiarie"
 import ReferAndEarnScreen from "./Screens/ReferAndEarn"
 
 
-function App() {
+function App({navigation}) {
   return (
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+      <RootStackScreen />
+      {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="Dashboard" component={MainTabScreen} />
         <Drawer.Screen name="KycProcessScreen" component={KycProcessScreen} />
         <Drawer.Screen name="SendFoodScreen" component={SendFoodScreen} />
@@ -28,7 +30,7 @@ function App() {
         <Drawer.Screen name="BeneficiarieScreen" component={BeneficiarieScreen} />
         <Drawer.Screen name="ReferAndEarnScreen" component={ReferAndEarnScreen} />
 
-      </Drawer.Navigator>
+      </Drawer.Navigator> */}
     </NavigationContainer>
   );
 }
