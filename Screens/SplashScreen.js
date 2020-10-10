@@ -16,6 +16,7 @@ import * as Animatable from 'react-native-animatable';
 const SplashScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
+           <StatusBar backgroundColor="#242e55" barStyle="light-content"/>
          <View style={styles.header}>
              <Animatable.Image 
              animation="bounceIn"
