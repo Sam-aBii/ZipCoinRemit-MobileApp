@@ -7,19 +7,19 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { Button, DatePicker } from "native-base";
+import { Button } from "native-base";
 import * as Animatable from "react-native-animatable";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
-
-import DatePickerExample from "../utils/DatePicker";
 
 const SignUpScreen = ({ navigation }) => {
   const [data, setData] = useState({
     email: "",
     password: "",
+    confirm_password: "",
     check_textInputChange: false,
     secureTextEntry: true,
+    confirm_secureTextEntry: true,
   });
 
   const textInputChange = (val) => {
@@ -44,11 +44,23 @@ const SignUpScreen = ({ navigation }) => {
       password: val,
     });
   };
+  const handleConfirmPasswordChange = (val) => {
+    setData({
+      ...data,
+      confirm_password: val,
+    });
+  };
 
   const updateSecureTextEntry = () => {
     setData({
       ...data,
       secureTextEntry: !data.secureTextEntry,
+    });
+  };
+  const ConfrmupdateSecureTextEntry = () => {
+    setData({
+      ...data,
+      confirm_secureTextEntry: !data.confirm_secureTextEntry,
     });
   };
   return (
@@ -82,24 +94,6 @@ const SignUpScreen = ({ navigation }) => {
           ) : null}
         </View>
 
-        <View style={styles.action1}>
-          <FontAwesome name="calendar" color="#dba84e" size={20} style={{marginTop: 14}} />
-          <DatePicker
-            defaultDate={new Date(2020, 4, 4)}
-            minimumDate={new Date(1960, 1, 1)}
-            maximumDate={new Date(2020, 12, 31)}
-            timeZoneOffsetInMinutes={undefined}
-            modalTransparent={false}
-            animationType={"fade"}
-            placeHolderText="Select date of  Birth"
-            textStyle={{ color: "#000" }}
-            placeHolderTextStyle={{ color: "#A9A9A9" }}
-          />
-          {/* <Text>
-              Date: {this.state.chosenDate.toString().substr(4, 12)}
-            </Text> */}
-        </View>
-
         <View style={styles.action}>
           <FontAwesome name="lock" color="#dba84e" size={20} />
           <TextInput
@@ -125,13 +119,13 @@ const SignUpScreen = ({ navigation }) => {
           <TextInput
             style={styles.textInput}
             placeholder="Confirm Password"
-            secureTextEntry={data.secureTextEntry ? true : false}
-            onChangeText={(val) => handlePasswordChange(val)}
+            secureTextEntry={data.confirm_secureTextEntry ? true : false}
+            onChangeText={(val) => handleConfirmPasswordChange(val)}
           />
 
           <Animatable.View animation="zoomIn">
-            <TouchableOpacity onPress={updateSecureTextEntry}>
-              {data.secureTextEntry ? (
+            <TouchableOpacity onPress={ConfrmupdateSecureTextEntry}>
+              {data.confirm_secureTextEntry ? (
                 <Feather name="eye-off" color="#dba84e" size={20} />
               ) : (
                 <Feather name="eye" color="#dba84e" size={20} />
@@ -139,9 +133,13 @@ const SignUpScreen = ({ navigation }) => {
             </TouchableOpacity>
           </Animatable.View>
         </View>
+
         <View style={styles.action}>
           <FontAwesome name="share-square-o" color="#dba84e" size={20} />
-          <TextInput style={styles.textInput} placeholder="Referral Code" />
+          <TextInput
+            style={styles.textInput}
+            placeholder="Referral Code (Optional)"
+          />
         </View>
         <View style={styles.button}>
           <Button rounded block style={{ backgroundColor: "#dba84e" }}>
@@ -179,15 +177,16 @@ const styles = StyleSheet.create({
     flex: 0.5,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
-    paddingBottom: 50,
+    paddingBottom: 20,
   },
   footer: {
     flex: 3,
     backgroundColor: "#fff",
-    borderTopLeftRadius: 30,
-    borderTopRightRadius: 30,
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
     paddingHorizontal: 20,
     paddingVertical: 30,
+    paddingTop: 10,
   },
   text_header: {
     color: "#fff",
@@ -203,7 +202,7 @@ const styles = StyleSheet.create({
   action: {
     flexDirection: "row",
     marginTop: 10,
-    paddingTop: 22,
+    paddingTop: 20,
     borderBottomWidth: 1,
     borderBottomColor: "#f2f2f2",
     paddingBottom: 5,

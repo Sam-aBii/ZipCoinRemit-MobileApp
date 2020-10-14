@@ -1,12 +1,41 @@
-import React from 'react'
-import { View,Text } from 'react-native'
+import React from "react";
+import {
+  Container,
+  Header,
+  Title,
+  Content,
+  Button,
+  Left,
+  Right,
+  Body,
+  Icon,
+  Text,
+} from "native-base";
 
-const ReferAndEarnScreen = () => {
-    return (
-        <View  style={{flex:1,alignItems: 'center',justifyContent:'center'}}>
-            <Text> Refer and earn</Text>
-        </View>
-    )
-}
+import {StatusBar} from "react-native"
 
-export default ReferAndEarnScreen
+const ReferAndEarnScreen = ({ navigation }) => {
+  return (
+    <Container style={{ fontFamily: 'Roboto' }}>
+        <Header style={{ backgroundColor: "#dba84e" }}>
+        <StatusBar backgroundColor="#dba84e" barStyle="light-content" />
+
+          <Left>
+            <Button transparent>
+              <Icon name="menu" onPress={() => navigation.openDrawer()} />
+            </Button>
+          </Left>
+          <Body>
+            <Title>Refer & Earn</Title>
+          </Body>
+          <Right />
+        </Header>
+        <Content>
+          <Text>This is Content Section</Text>
+        </Content>
+    </Container>
+  );
+};
+
+export default ReferAndEarnScreen;
+

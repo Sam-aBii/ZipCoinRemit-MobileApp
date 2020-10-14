@@ -12,10 +12,13 @@ import {
   Text,
 } from "native-base";
 
+import {StatusBar, AppRegistry} from "react-native"
+
 const KycProcessScreen = ({ navigation }) => {
   return (
-    <Container>
+    <Container style={{ fontFamily: 'Roboto' }}>
         <Header style={{ backgroundColor: "#dba84e" }}>
+        <StatusBar backgroundColor="#dba84e" barStyle="light-content" />
           <Left>
             <Button transparent>
               <Icon name="menu" onPress={() => navigation.openDrawer()} />
@@ -34,3 +37,6 @@ const KycProcessScreen = ({ navigation }) => {
 };
 
 export default KycProcessScreen;
+
+
+AppRegistry.registerComponent('AndroidFonts', () => AndroidFonts);

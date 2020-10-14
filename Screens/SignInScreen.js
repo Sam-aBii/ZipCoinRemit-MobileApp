@@ -6,7 +6,6 @@ import {
   StatusBar,
   TextInput,
   TouchableOpacity,
-  Dimensions,
 } from "react-native";
 import { Button } from "native-base";
 import * as Animatable from "react-native-animatable";
@@ -54,7 +53,7 @@ const SignInScreen = ({ navigation }) => {
     <View style={styles.container}>
       <StatusBar backgroundColor="#242e55" barStyle="light-content" />
       <View style={styles.header}>
-        <Text style={styles.text_header}>Wellcome!</Text>
+        <Text style={styles.text_header}>Welcome!</Text>
       </View>
       <Animatable.View animation="fadeInUp" style={styles.footer}>
         <Text style={styles.text_footer}>Email</Text>
@@ -111,6 +110,15 @@ const SignInScreen = ({ navigation }) => {
               Sign Up
             </Text>
           </Button>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("ForgotPassword");
+          }}
+        >
+          <View style={styles.forgot_password}>
+            <Text style={styles.forgot_password_text}>Forgot Password?</Text>
+          </View>
         </TouchableOpacity>
       </Animatable.View>
     </View>
@@ -178,15 +186,11 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginTop: 50,
   },
-  signIn: {
-    width: "100%",
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 10,
+  forgot_password: {
+    paddingLeft: 180,
+    paddingTop: 20,
   },
-  textSign: {
-    fontSize: 18,
-    fontWeight: "bold",
+  forgot_password_text: {
+    color: "#dba84e",
   },
 });

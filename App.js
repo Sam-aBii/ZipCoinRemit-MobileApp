@@ -19,8 +19,8 @@ import ReferAndEarnScreen from "./Screens/ReferAndEarn"
 function App({navigation}) {
   return (
     <NavigationContainer>
-      <RootStackScreen />
-      {/* <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
+      {/* <RootStackScreen /> */}
+      <Drawer.Navigator drawerContent={props => <DrawerContent {...props} />}>
         <Drawer.Screen name="Dashboard" component={MainTabScreen} />
         <Drawer.Screen name="KycProcessScreen" component={KycProcessScreen} />
         <Drawer.Screen name="SendFoodScreen" component={SendFoodScreen} />
@@ -29,8 +29,7 @@ function App({navigation}) {
         <Drawer.Screen name="PaymentScreen" component={PaymentScreen} />
         <Drawer.Screen name="BeneficiarieScreen" component={BeneficiarieScreen} />
         <Drawer.Screen name="ReferAndEarnScreen" component={ReferAndEarnScreen} />
-
-      </Drawer.Navigator> */}
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
