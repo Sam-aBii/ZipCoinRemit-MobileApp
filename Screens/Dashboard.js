@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ScrollView, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
 import {
   Container,
   Content,
@@ -11,10 +11,9 @@ import {
 } from "native-base";
 import { View } from "react-native-animatable";
 
-const DashboardScreen = ({ navigation }) => {
+const DashboardScreen = () => {
   return (
     <Container>
-      <ScrollView>
         <Content style={{ marginHorizontal: 8 }}>
           <View style={styles.header}>
             <Text style={styles.headerText}>AVAILABLE BALANCES</Text>
@@ -88,7 +87,6 @@ const DashboardScreen = ({ navigation }) => {
             </CardItem>
           </Card>
         </Content>
-      </ScrollView>
     </Container>
   );
 };
