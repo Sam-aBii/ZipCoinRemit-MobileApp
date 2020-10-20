@@ -12,6 +12,10 @@ import * as Animatable from "react-native-animatable";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 
+import Typograpghy from "../Theme";
+const { COLORS } = Typograpghy;
+
+
 const SignUpScreen = ({ navigation }) => {
   const [data, setData] = useState({
     email: "",
@@ -65,13 +69,16 @@ const SignUpScreen = ({ navigation }) => {
   };
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#242e55" barStyle="light-content" />
+      <StatusBar backgroundColor={COLORS.DEFAULT} barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.text_header}>Register Now!</Text>
+        <Text style={styles.text_header1}>Simple & Easy</Text>
+       
+
       </View>
       <Animatable.View animation="fadeInUp" style={styles.footer}>
         <View style={styles.action}>
-          <FontAwesome name="user-circle" color="#dba84e" size={20} />
+          <FontAwesome name="user-circle" color={COLORS.DEFAULT} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Full Name"
@@ -80,7 +87,7 @@ const SignUpScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="user-o" color="#dba84e" size={20} />
+          <FontAwesome name="user-o" color={COLORS.DEFAULT} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Your Email"
@@ -89,13 +96,13 @@ const SignUpScreen = ({ navigation }) => {
           />
           {data.check_textInputChange ? (
             <Animatable.View animation="zoomIn">
-              <Feather name="check-circle" color="#dba84e" size={20} />
+              <Feather name="check-circle" color={COLORS.DEFAULT} size={20} />
             </Animatable.View>
           ) : null}
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="lock" color="#dba84e" size={20} />
+          <FontAwesome name="lock" color={COLORS.DEFAULT} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Your Password"
@@ -106,16 +113,16 @@ const SignUpScreen = ({ navigation }) => {
           <Animatable.View animation="zoomIn">
             <TouchableOpacity onPress={updateSecureTextEntry}>
               {data.secureTextEntry ? (
-                <Feather name="eye-off" color="#dba84e" size={20} />
+                <Feather name="eye-off" color={COLORS.DEFAULT} size={20} />
               ) : (
-                <Feather name="eye" color="#dba84e" size={20} />
+                <Feather name="eye" color={COLORS.DEFAULT} size={20} />
               )}
             </TouchableOpacity>
           </Animatable.View>
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="lock" color="#dba84e" size={20} />
+          <FontAwesome name="lock" color={COLORS.DEFAULT} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Confirm Password"
@@ -126,24 +133,24 @@ const SignUpScreen = ({ navigation }) => {
           <Animatable.View animation="zoomIn">
             <TouchableOpacity onPress={ConfrmupdateSecureTextEntry}>
               {data.confirm_secureTextEntry ? (
-                <Feather name="eye-off" color="#dba84e" size={20} />
+                <Feather name="eye-off" color={COLORS.DEFAULT} size={20} />
               ) : (
-                <Feather name="eye" color="#dba84e" size={20} />
+                <Feather name="eye" color={COLORS.DEFAULT} size={20} />
               )}
             </TouchableOpacity>
           </Animatable.View>
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="share-square-o" color="#dba84e" size={20} />
+          <FontAwesome name="share-square-o" color={COLORS.DEFAULT} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Referral Code (Optional)"
           />
         </View>
         <View style={styles.button}>
-          <Button rounded block style={{ backgroundColor: "#dba84e" }}>
-            <Text style={{ color: "#FFF", fontWeight: "bold" }}>Sign Up</Text>
+          <Button rounded block style={{ backgroundColor: COLORS.DEFAULT }}>
+            <Text style={{ color: COLORS.WHITE, fontWeight: "bold" }}>Sign Up</Text>
           </Button>
         </View>
         <TouchableOpacity>
@@ -151,12 +158,12 @@ const SignUpScreen = ({ navigation }) => {
             block
             bordered
             rounded
-            style={{ marginTop: 20, borderColor: "#dba84e" }}
+            style={{ marginTop: 20, borderColor: COLORS.DEFAULT }}
             onPress={() => {
               navigation.navigate("SignInScreen");
             }}
           >
-            <Text style={{ color: "#dba84e", fontWeight: "bold" }}>
+            <Text style={{ color: COLORS.DEFAULT, fontWeight: "bold" }}>
               Sign In
             </Text>
           </Button>
@@ -171,17 +178,18 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#242e55",
+    backgroundColor: COLORS.DEFAULT,
   },
   header: {
-    flex: 0.5,
+    flex: 0.7,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
     paddingBottom: 20,
+    marginStart: 60
   },
   footer: {
     flex: 3,
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.WHITE,
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
     paddingHorizontal: 20,
@@ -189,12 +197,16 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   text_header: {
-    color: "#fff",
+    color: COLORS.WHITE,
     fontWeight: "bold",
     fontSize: 30,
   },
+  text_header1: {
+    color: COLORS.WHITE,
+    fontSize: 20,
+  },
   text_footer: {
-    color: "#242e55",
+    color: COLORS.DEFAULT,
     fontSize: 18,
     paddingBottom: 15,
     marginTop: 12,
@@ -204,7 +216,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 20,
     borderBottomWidth: 1,
-    borderBottomColor: "#f2f2f2",
+    borderBottomColor: COLORS.BORDER_COLOR,
     paddingBottom: 5,
   },
   action1: {
@@ -212,13 +224,12 @@ const styles = StyleSheet.create({
     marginTop: 10,
     paddingTop: 15,
     borderBottomWidth: 1,
-    borderBottomColor: "#f2f2f2",
+    borderBottomColor: COLORS.BORDER_COLOR,
   },
   actionError: {
     flexDirection: "row",
     marginTop: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#FF0000",
     paddingBottom: 5,
   },
   textInput: {
@@ -226,11 +237,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 0 : -12,
     paddingLeft: 10,
     paddingTop: 5,
-    color: "#05375a",
-  },
-  errorMsg: {
-    color: "#FF0000",
-    fontSize: 14,
+    color: COLORS.DEFAULT,
   },
   button: {
     alignItems: "center",

@@ -12,6 +12,9 @@ import * as Animatable from "react-native-animatable";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 
+import Typograpghy from "../Theme";
+const { COLORS } = Typograpghy;
+
 const SignInScreen = ({ navigation }) => {
   const [data, setData] = useState({
     email: "",
@@ -51,14 +54,16 @@ const SignInScreen = ({ navigation }) => {
   };
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#242e55" barStyle="light-content" />
+      <StatusBar backgroundColor={COLORS.DEFAULT} barStyle="light-content" />
       <View style={styles.header}>
-        <Text style={styles.text_header}>Welcome!</Text>
+        <Text style={styles.text_header}>Welcome</Text>
+        <Text style={styles.text_header1}>Fast.Secure.Low Cost</Text>
+        <Text style={styles.text_header2}>"A Service you can trust!"</Text>
       </View>
       <Animatable.View animation="fadeInUp" style={styles.footer}>
         <Text style={styles.text_footer}>Email</Text>
         <View style={styles.action}>
-          <FontAwesome name="user-o" color="#dba84e" size={20} />
+          <FontAwesome name="user-o" color={COLORS.SECONDARY} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Your Email"
@@ -67,13 +72,13 @@ const SignInScreen = ({ navigation }) => {
           />
           {data.check_textInputChange ? (
             <Animatable.View animation="zoomIn">
-              <Feather name="check-circle" color="#dba84e" size={20} />
+              <Feather name="check-circle" color={COLORS.SECONDARY} size={20} />
             </Animatable.View>
           ) : null}
         </View>
         <Text style={[styles.text_footer, { marginTop: 35 }]}>Password</Text>
         <View style={styles.action}>
-          <FontAwesome name="lock" color="#dba84e" size={20} />
+          <FontAwesome name="lock" color={COLORS.SECONDARY} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Your Password"
@@ -84,16 +89,18 @@ const SignInScreen = ({ navigation }) => {
           <Animatable.View animation="zoomIn">
             <TouchableOpacity onPress={updateSecureTextEntry}>
               {data.secureTextEntry ? (
-                <Feather name="eye-off" color="#dba84e" size={20} />
+                <Feather name="eye-off" color={COLORS.SECONDARY} size={20} />
               ) : (
-                <Feather name="eye" color="#dba84e" size={20} />
+                <Feather name="eye" color={COLORS.SECONDARY} size={20} />
               )}
             </TouchableOpacity>
           </Animatable.View>
         </View>
         <View style={styles.button}>
-          <Button rounded block style={{ backgroundColor: "#dba84e" }}>
-            <Text style={{ color: "#FFF", fontWeight: "bold" }}>Sign In</Text>
+          <Button rounded block style={{ backgroundColor: COLORS.SECONDARY }}>
+            <Text style={{ color: COLORS.WHITE, fontWeight: "bold" }}>
+              Sign In
+            </Text>
           </Button>
         </View>
         <TouchableOpacity>
@@ -101,12 +108,12 @@ const SignInScreen = ({ navigation }) => {
             block
             bordered
             rounded
-            style={{ marginTop: 30, borderColor: "#dba84e" }}
+            style={{ marginTop: 30, borderColor: COLORS.SECONDARY }}
             onPress={() => {
               navigation.navigate("SignUpScreen");
             }}
           >
-            <Text style={{ color: "#dba84e", fontWeight: "bold" }}>
+            <Text style={{ color: COLORS.SECONDARY, fontWeight: "bold" }}>
               Sign Up
             </Text>
           </Button>
@@ -130,29 +137,40 @@ export default SignInScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#242e55",
+    backgroundColor: COLORS.DEFAULT,
   },
   header: {
     flex: 1,
     justifyContent: "flex-end",
     paddingHorizontal: 20,
     paddingBottom: 50,
+    marginStart: 60,
   },
   footer: {
     flex: 3,
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.WHITE,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
     paddingVertical: 30,
   },
   text_header: {
-    color: "#fff",
+    color: COLORS.WHITE,
     fontWeight: "bold",
     fontSize: 30,
+    padding: 10,
+  },
+  text_header1: {
+    color: COLORS.WHITE,
+    fontSize: 18,
+    paddingBottom: 5,
+  },
+  text_header2: {
+    color: COLORS.SECONDARY,
+    fontSize: 15,
   },
   text_footer: {
-    color: "#242e55",
+    color: COLORS.DEFAULT,
     fontSize: 18,
     paddingBottom: 15,
     marginTop: 12,
@@ -161,14 +179,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#f2f2f2",
+    borderBottomColor: COLORS.BORDER_COLOR,
     paddingBottom: 5,
   },
   actionError: {
     flexDirection: "row",
     marginTop: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#FF0000",
     paddingBottom: 5,
   },
   textInput: {
@@ -176,11 +193,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 0 : -12,
     paddingLeft: 10,
     paddingTop: 5,
-    color: "#05375a",
-  },
-  errorMsg: {
-    color: "#FF0000",
-    fontSize: 14,
+    color: COLORS.DEFAULT,
   },
   button: {
     alignItems: "center",
@@ -191,6 +204,6 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   forgot_password_text: {
-    color: "#dba84e",
+    color: COLORS.SECONDARY,
   },
 });

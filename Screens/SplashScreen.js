@@ -11,10 +11,15 @@ import { Button, Icon } from "native-base";
 
 import * as Animatable from "react-native-animatable";
 
+import Typograpghy from "../Theme"
+const {COLORS} = Typograpghy;
+
+
+
 const SplashScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#242e55" barStyle="light-content" />
+      <StatusBar backgroundColor={COLORS.DEFAULT} barStyle="light-content" />
       <View style={styles.header}>
         <Animatable.Image
           animation="bounceIn"
@@ -34,7 +39,7 @@ const SplashScreen = ({ navigation }) => {
             block
             rounded
             iconRight
-            style={{ backgroundColor: "#dba84e" }}
+            style={{ backgroundColor: COLORS.SECONDARY }}
             onPress={() => {
               navigation.navigate("SignInScreen");
             }}
@@ -56,7 +61,7 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#242e55",
+    backgroundColor: COLORS.DEFAULT,
   },
   header: {
     flex: 1.5,
@@ -65,7 +70,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.WHITE,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingVertical: 50,
@@ -76,7 +81,7 @@ const styles = StyleSheet.create({
     height: height_logo,
   },
   title: {
-    color: "#242e55",
+    color: COLORS.DEFAULT,
     fontSize: 30,
     fontWeight: "bold",
   },
@@ -84,10 +89,11 @@ const styles = StyleSheet.create({
     color: "grey",
     marginTop: 5,
     fontSize: 15,
+    paddingTop:10,
     paddingBottom: 50,
   },
   textSign: {
-    color: "white",
+    color: COLORS.WHITE,
     fontWeight: "bold",
     marginRight: 20,
   },

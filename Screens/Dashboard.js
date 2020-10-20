@@ -11,6 +11,10 @@ import {
 } from "native-base";
 import { View } from "react-native-animatable";
 
+import Typograpghy from "../Theme"
+const {COLORS} = Typograpghy;
+
+
 const DashboardScreen = () => {
   return (
     <Container>
@@ -98,7 +102,7 @@ const styles = StyleSheet.create({
     padding: 15,
     marginBottom: 5,
     borderBottomWidth: 1,
-    borderBottomColor: "#242e55",
+    borderBottomColor: COLORS.DEFAULT,
   },
   headerText: {
     fontSize: 20,
@@ -120,7 +124,7 @@ const styles = StyleSheet.create({
   },
   CardItems: {
     borderLeftWidth: 8,
-    borderLeftColor: "#dba84e",
+    borderLeftColor: COLORS.SECONDARY,
     borderTopLeftRadius: 10,
     borderBottomLeftRadius: 10,
     backgroundColor: "#ebedef",
