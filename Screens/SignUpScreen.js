@@ -78,7 +78,7 @@ const SignUpScreen = ({ navigation }) => {
       </View>
       <Animatable.View animation="fadeInUp" style={styles.footer}>
         <View style={styles.action}>
-          <FontAwesome name="user-circle" color={COLORS.DEFAULT} size={20} />
+          <FontAwesome name="user-circle" color={COLORS.SECONDARY} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Full Name"
@@ -87,7 +87,7 @@ const SignUpScreen = ({ navigation }) => {
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="user-o" color={COLORS.DEFAULT} size={20} />
+          <FontAwesome name="user-o" color={COLORS.SECONDARY} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Your Email"
@@ -96,13 +96,13 @@ const SignUpScreen = ({ navigation }) => {
           />
           {data.check_textInputChange ? (
             <Animatable.View animation="zoomIn">
-              <Feather name="check-circle" color={COLORS.DEFAULT} size={20} />
+              <Feather name="check-circle" color={COLORS.SECONDARY} size={20} />
             </Animatable.View>
           ) : null}
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="lock" color={COLORS.DEFAULT} size={20} />
+          <FontAwesome name="lock" color={COLORS.SECONDARY} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Your Password"
@@ -113,16 +113,16 @@ const SignUpScreen = ({ navigation }) => {
           <Animatable.View animation="zoomIn">
             <TouchableOpacity onPress={updateSecureTextEntry}>
               {data.secureTextEntry ? (
-                <Feather name="eye-off" color={COLORS.DEFAULT} size={20} />
+                <Feather name="eye-off" color={COLORS.SECONDARY} size={20} />
               ) : (
-                <Feather name="eye" color={COLORS.DEFAULT} size={20} />
+                <Feather name="eye" color={COLORS.SECONDARY} size={20} />
               )}
             </TouchableOpacity>
           </Animatable.View>
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="lock" color={COLORS.DEFAULT} size={20} />
+          <FontAwesome name="lock" color={COLORS.SECONDARY} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Confirm Password"
@@ -133,23 +133,23 @@ const SignUpScreen = ({ navigation }) => {
           <Animatable.View animation="zoomIn">
             <TouchableOpacity onPress={ConfrmupdateSecureTextEntry}>
               {data.confirm_secureTextEntry ? (
-                <Feather name="eye-off" color={COLORS.DEFAULT} size={20} />
+                <Feather name="eye-off" color={COLORS.SECONDARY} size={20} />
               ) : (
-                <Feather name="eye" color={COLORS.DEFAULT} size={20} />
+                <Feather name="eye" color={COLORS.SECONDARY} size={20} />
               )}
             </TouchableOpacity>
           </Animatable.View>
         </View>
 
         <View style={styles.action}>
-          <FontAwesome name="share-square-o" color={COLORS.DEFAULT} size={20} />
+          <FontAwesome name="share-square-o" color={COLORS.SECONDARY} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Referral Code (Optional)"
           />
         </View>
         <View style={styles.button}>
-          <Button rounded block style={{ backgroundColor: COLORS.DEFAULT }}>
+          <Button rounded block style={{ backgroundColor: COLORS.SECONDARY }}>
             <Text style={{ color: COLORS.WHITE, fontWeight: "bold" }}>Sign Up</Text>
           </Button>
         </View>
@@ -158,12 +158,12 @@ const SignUpScreen = ({ navigation }) => {
             block
             bordered
             rounded
-            style={{ marginTop: 20, borderColor: COLORS.DEFAULT }}
+            style={{ marginTop: 20, borderColor: COLORS.SECONDARY }}
             onPress={() => {
               navigation.navigate("SignInScreen");
             }}
           >
-            <Text style={{ color: COLORS.DEFAULT, fontWeight: "bold" }}>
+            <Text style={{ color: COLORS.SECONDARY, fontWeight: "bold" }}>
               Sign In
             </Text>
           </Button>
@@ -185,7 +185,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
     paddingHorizontal: 20,
     paddingBottom: 20,
-    marginStart: 60
   },
   footer: {
     flex: 3,
@@ -204,6 +203,7 @@ const styles = StyleSheet.create({
   text_header1: {
     color: COLORS.WHITE,
     fontSize: 20,
+    color: COLORS.SECONDARY
   },
   text_footer: {
     color: COLORS.DEFAULT,

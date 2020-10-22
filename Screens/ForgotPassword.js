@@ -11,17 +11,20 @@ import { Button } from "native-base";
 import * as Animatable from "react-native-animatable";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
+import Typograpghy from "../Theme";
+const { COLORS } = Typograpghy;
+
 const ForgotPassword = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <StatusBar backgroundColor="#242e55" barStyle="light-content" />
+      <StatusBar backgroundColor={COLORS.DEFAULT} barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.text_header}>Recover your password!</Text>
       </View>
 
       <Animatable.View animation="fadeInUp" style={styles.footer}>
         <View style={styles.action}>
-          <FontAwesome name="mail-forward" color="#dba84e" size={20} />
+          <FontAwesome name="mail-forward" color={COLORS.SECONDARY} size={20} />
           <TextInput
             style={styles.textInput}
             placeholder="Enter Your Email"
@@ -33,9 +36,9 @@ const ForgotPassword = ({ navigation }) => {
             block
             bordered
             rounded
-            style={{ marginTop: 30, borderColor: "#dba84e" }}
+            style={{ marginTop: 30, borderColor: COLORS.SECONDARY }}
           >
-            <Text style={{ color: "#dba84e", fontWeight: "bold" }}>
+            <Text style={{ color: COLORS.SECONDARY, fontWeight: "bold" }}>
               Reset Link
             </Text>
           </Button>
@@ -63,7 +66,7 @@ export default ForgotPassword;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#242e55",
+    backgroundColor: COLORS.DEFAULT,
   },
   header: {
     flex: 1,
@@ -73,7 +76,7 @@ const styles = StyleSheet.create({
   },
   footer: {
     flex: 3,
-    backgroundColor: "#fff",
+    backgroundColor: COLORS.WHITE,
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     paddingHorizontal: 20,
@@ -81,7 +84,7 @@ const styles = StyleSheet.create({
     paddingTop: 150,
   },
   text_header: {
-    color: "#fff",
+    color: COLORS.WHITE,
     fontWeight: "bold",
     fontSize: 25,
   },
@@ -89,7 +92,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 10,
     borderBottomWidth: 1,
-    borderBottomColor: "#f2f2f2",
+    borderBottomColor: COLORS.BORDER_COLOR,
     paddingBottom: 5,
   },
   textInput: {
@@ -97,7 +100,7 @@ const styles = StyleSheet.create({
     marginTop: Platform.OS === "ios" ? 0 : -12,
     paddingLeft: 10,
     paddingTop: 5,
-    color: "#05375a",
+    color: COLORS.DEFAULT,
   },
   forgot_password: {
     paddingLeft: 80,
@@ -107,6 +110,6 @@ const styles = StyleSheet.create({
     color: "grey",
   },
   forgot_password_textLink: {
-    color: "#dba84e",
+    color: COLORS.SECONDARY,
   },
 });
