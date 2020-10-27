@@ -157,19 +157,18 @@ const styles = StyleSheet.create({
     color: COLORS.WHITE,
     fontWeight: "bold",
     fontSize: 30,
-    marginStart: 90
+    marginStart: 90,
   },
   text_header1: {
     color: COLORS.WHITE,
     fontSize: 18,
     paddingBottom: 2,
-    marginStart: 70
+    marginStart: 70,
   },
   text_header2: {
     color: COLORS.SECONDARY,
     fontSize: 15,
-    marginStart: 73
-
+    marginStart: 73,
   },
   text_footer: {
     color: COLORS.DEFAULT,

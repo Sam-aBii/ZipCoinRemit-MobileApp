@@ -6,6 +6,7 @@ import SplashScreen from "../Screens/SplashScreen";
 import SignInScreen from "../Screens/SignInScreen";
 import SignUpScreen from "../Screens/SignUpScreen";
 import ForgotPassword from "../Screens/ForgotPassword";
+import BasicKyc from "../Screens/KycForms/BasicKyc";
 
 const RootStack = createStackNavigator();
 
@@ -16,6 +17,8 @@ const RootStackScreen = () => {
       <RootStack.Screen name="SignInScreen" component={SignInScreen} />
       <RootStack.Screen name="SignUpScreen" component={SignUpScreen} />
       <RootStack.Screen name="ForgotPassword" component={ForgotPassword} />
+      <RootStack.Screen name="BasicKyc" component={BasicKyc} />
+
     </RootStack.Navigator>
   );
 };
