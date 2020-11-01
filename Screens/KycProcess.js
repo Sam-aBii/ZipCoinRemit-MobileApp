@@ -14,13 +14,19 @@ import {
   CardItem,
   Accordion,
 } from "native-base";
-
+import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar, StyleSheet, TouchableOpacity } from "react-native";
 
 import Typograpghy from "../Theme";
+import BasicKyc from "../Screens/KycForms/BasicKyc"
+import StandardKyc from "../Screens/KycForms/StandardKyc"
+import AdvancedKyc from "../Screens/KycForms/AdvanceKyc"
+
 const { COLORS } = Typograpghy;
 
-const KycProcessScreen = ({ navigation }) => {
+const RootStack = createStackNavigator();
+
+export const KycProcessScreen = ({ navigation }) => {
   const dataArray = [
     {
       title: "Basic KYC",
@@ -29,13 +35,13 @@ const KycProcessScreen = ({ navigation }) => {
           <CardItem>
             <Icon name="document" style={styles.BasicIcon} />
             <Text style={styles.SendLimitsBasic}>Send Limits</Text>
-            <Text style={styles.KycCardNum}>$5.0 - $1,500.0</Text>
+            <Text style={styles.KycCardNum}>$5.0 - $1,000</Text>
           </CardItem>
           <CardItem>
             <TouchableOpacity
-              onPress={() => navigation.navigate('/#/KycForms/BasicKyc')}
+              onPress={() => navigation.navigate("Basic")}
             >
-            <Text style={styles.SubmitKycBasic}>Submit Your KYC</Text>
+              <Text style={styles.SubmitKycBasic}>Submit Your KYC</Text>
             </TouchableOpacity>
           </CardItem>
         </Card>
@@ -48,7 +54,7 @@ const KycProcessScreen = ({ navigation }) => {
           <CardItem>
             <Icon name="document" style={styles.StandardIcon} />
             <Text style={styles.SendLimitsAdvance}>Send Limits</Text>
-            <Text style={styles.KycCardNum}>$1,501 - $9,999</Text>
+            <Text style={styles.KycCardNum}>$1,001 - $2,999</Text>
           </CardItem>
           <CardItem>
             <TouchableOpacity>
@@ -65,7 +71,7 @@ const KycProcessScreen = ({ navigation }) => {
           <CardItem>
             <Icon name="document" style={styles.AdvanceIcon} />
             <Text style={styles.SendLimitsStandard}>Send Limits</Text>
-            <Text style={styles.KycCardNum}>$10,000.0+</Text>
+            <Text style={styles.KycCardNum}>$3,000+</Text>
           </CardItem>
           <CardItem>
             <TouchableOpacity>
@@ -116,7 +122,18 @@ const KycProcessScreen = ({ navigation }) => {
   );
 };
 
-export default KycProcessScreen;
+const KycRootStack = () => {
+  return (
+    <RootStack.Navigator headerMode="none">
+      <RootStack.Screen name="KycScreen" component={KycProcessScreen} />
+      <RootStack.Screen name="Basic" component={BasicKyc} />
+      <RootStack.Screen name="Advanced" component={AdvancedKyc} />
+      <RootStack.Screen name="Standard" component={StandardKyc} />
+    </RootStack.Navigator>
+  );
+};
+
+export default KycRootStack;
 
 const styles = StyleSheet.create({
   Header: {
