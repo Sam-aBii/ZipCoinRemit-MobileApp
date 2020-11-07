@@ -3,18 +3,19 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import DashboardScreen from "../Screens/Dashboard";
 import SettingScreen from "../Screens/Setting";
 import SendMoneyScreen from "../Screens/SendMoney";
 import AirTimeTopScreen from "../Screens/AirTimeTopUp";
+import SendFoodScreen from "../Screens/SendFood";
 
 const HomeStack = createStackNavigator();
 const SettingStack = createStackNavigator();
 const SendMoneyStack = createStackNavigator();
-const AirTimeTopStack = createStackNavigator();
+const SendFoodStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
@@ -26,7 +27,7 @@ const MainTabScreen = () => (
       name="Dashboard"
       component={HomeStackScreen}
       options={{
-        tabBarLabel: 'Dashboard',
+        tabBarLabel: "Dashboard",
         tabBarColor: "#dba84e",
         tabBarIcon: ({ color }) => (
           <MaterialCommunityIcons name="home" color={color} size={26} />
@@ -37,7 +38,7 @@ const MainTabScreen = () => (
       name="Send Money"
       component={SendMoneyStackScreen}
       options={{
-        tabBarLabel: 'Send Money',
+        tabBarLabel: "Send Money",
         tabBarColor: "#dba84e",
         tabBarIcon: ({ color }) => (
           <MaterialCommunityIcons name="cash-usd" color={color} size={26} />
@@ -51,7 +52,22 @@ const MainTabScreen = () => (
         tabBarLabel: "AirTime TopUp",
         tabBarColor: "#dba84e",
         tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="application-export" color={color} size={26} />
+          <MaterialCommunityIcons
+            name="application-export"
+            color={color}
+            size={26}
+          />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="Send Food"
+      component={SendFoodStackScreen}
+      options={{
+        tabBarLabel: "Send Food",
+        tabBarColor: "#dba84e",
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="food" color={color} size={26} />
         ),
       }}
     />
@@ -62,7 +78,11 @@ const MainTabScreen = () => (
         tabBarLabel: "Profile",
         tabBarColor: "#dba84e",
         tabBarIcon: ({ color }) => (
-          <MaterialCommunityIcons name="account-settings" color={color} size={26} />
+          <MaterialCommunityIcons
+            name="account-settings"
+            color={color}
+            size={26}
+          />
         ),
       }}
     />
@@ -151,29 +171,53 @@ const SendMoneyStackScreen = ({ navigation }) => (
 );
 
 const AirTimeTopStackScreen = ({ navigation }) => (
-    <AirTimeTopStack.Navigator
-      screenOptions={{
-        headerStyle: {
-          backgroundColor: "#dba84e",
-        },
-        headerTintColor: "#fff",
+  <SendFoodStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#dba84e",
+      },
+      headerTintColor: "#fff",
+    }}
+  >
+    <SendFoodStack.Screen
+      name="AirTime Top Up"
+      component={AirTimeTopScreen}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+            name="navicon"
+            size={25}
+            backgroundColor="#dba84e"
+            onPress={() => navigation.openDrawer()}
+          ></Icon.Button>
+        ),
       }}
-    >
-      <AirTimeTopStack.Screen
-        name="AirTime Top Up"
-        component={AirTimeTopScreen}
-        options={{
-          headerLeft: () => (
-            <Icon.Button
-              name="navicon"
-              size={25}
-              backgroundColor="#dba84e"
-              onPress={() => navigation.openDrawer()}
-            ></Icon.Button>
-          ),
-        }}
-      />
-    </AirTimeTopStack.Navigator>
-  );
-  
-  
+    />
+  </SendFoodStack.Navigator>
+);
+
+const SendFoodStackScreen = ({ navigation }) => (
+  <SendFoodStack.Navigator
+    screenOptions={{
+      headerStyle: {
+        backgroundColor: "#dba84e",
+      },
+      headerTintColor: "#fff",
+    }}
+  >
+    <SendFoodStack.Screen
+      name="Send Food"
+      component={SendFoodScreen}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+            name="navicon"
+            size={25}
+            backgroundColor="#dba84e"
+            onPress={() => navigation.openDrawer()}
+          ></Icon.Button>
+        ),
+      }}
+    />
+  </SendFoodStack.Navigator>
+);

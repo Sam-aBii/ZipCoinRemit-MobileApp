@@ -6,7 +6,6 @@ import { DrawerContent } from "./Navigators/DrawerContent";
 
 import RootStackScreen from "./Navigators/RootStackScreen";
 
-// import KycProcessScreen from "./Screens/KycProcess";
 import SendFoodScreen from "./Screens/SendFood";
 import TranscationsScreen from "./Screens/Transcations";
 import CustomerScreen from "./Screens/Customer";
@@ -24,7 +23,6 @@ function App() {
       <Drawer.Navigator drawerContent={(props) => <DrawerContent {...props} />}>
         <Drawer.Screen name="Dashboard" component={MainTabScreen} />
         <Drawer.Screen name="KycProcessScreen" component={KycStackScreen} />
-        <Drawer.Screen name="SendFoodScreen" component={SendFoodScreen} />
         <Drawer.Screen
           name="TranscationsScreen"
           component={TranscationsScreen}

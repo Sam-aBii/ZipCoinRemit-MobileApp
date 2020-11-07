@@ -1,17 +1,8 @@
 import React from "react";
 import { View, StyleSheet } from "react-native";
-import {
-  Avatar,
-  Title,
-  Caption,
-  Drawer,
-} from "react-native-paper";
+import { Avatar, Title, Caption, Drawer } from "react-native-paper";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-
-
-
-
 
 export function DrawerContent(props) {
   return (
@@ -42,17 +33,15 @@ export function DrawerContent(props) {
           </View>
 
           <Drawer.Section style={styles.drawerSection}>
-          <DrawerItem
+            <DrawerItem
               icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="home"
-                  color={color}
-                  size={size}
-                />
+                <MaterialCommunityIcons name="home" color={color} size={size} />
               )}
               label="Home"
-              onPress={() => {props.navigation.navigate('Dashboard')}}
-              />
+              onPress={() => {
+                props.navigation.navigate("Dashboard");
+              }}
+            />
             <DrawerItem
               icon={({ color, size }) => (
                 <MaterialCommunityIcons
@@ -62,18 +51,9 @@ export function DrawerContent(props) {
                 />
               )}
               label="KYC Process"
-              onPress={() => {props.navigation.navigate('KycProcessScreen')}}
-              />
-            <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="food"
-                  color={color}
-                  size={size}
-                />
-              )}
-              label="Send Food"
-              onPress={() => {props.navigation.navigate('SendFoodScreen')}}
+              onPress={() => {
+                props.navigation.navigate("KycProcessScreen");
+              }}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -84,7 +64,9 @@ export function DrawerContent(props) {
                 />
               )}
               label="Transcations"
-              onPress={() => {props.navigation.navigate('TranscationsScreen')}}
+              onPress={() => {
+                props.navigation.navigate("TranscationsScreen");
+              }}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -95,7 +77,9 @@ export function DrawerContent(props) {
                 />
               )}
               label="Customers"
-              onPress={() => {props.navigation.navigate('CustomerScreen')}}
+              onPress={() => {
+                props.navigation.navigate("CustomerScreen");
+              }}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -106,7 +90,9 @@ export function DrawerContent(props) {
                 />
               )}
               label="Payments"
-              onPress={() => {props.navigation.navigate('PaymentScreen')}}
+              onPress={() => {
+                props.navigation.navigate("PaymentScreen");
+              }}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -117,7 +103,9 @@ export function DrawerContent(props) {
                 />
               )}
               label="Beneficiaries"
-              onPress={() => {props.navigation.navigate('BeneficiarieScreen')}}
+              onPress={() => {
+                props.navigation.navigate("BeneficiarieScreen");
+              }}
             />
             <DrawerItem
               icon={({ color, size }) => (
@@ -128,7 +116,9 @@ export function DrawerContent(props) {
                 />
               )}
               label="Refer & Earn"
-              onPress={() => {props.navigation.navigate('ReferAndEarnScreen')}}
+              onPress={() => {
+                props.navigation.navigate("ReferAndEarnScreen");
+              }}
             />
           </Drawer.Section>
         </View>

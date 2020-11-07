@@ -1,25 +1,13 @@
 import React from "react";
-import {
-  Button,
-  Icon,
-} from "native-base";
+import { Button, Icon } from "native-base";
 
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Text, StatusBar } from "react-native";
 
 import Typograpghy from "../Theme";
 const { COLORS } = Typograpghy;
 
-const SendFoodScreen = ({ navigation }) => {
-  return (
-    <View style={styles.Header}>
-        <Button transparent>
-          <Icon name="menu" onPress={() => navigation.openDrawer()} style={styles.DrawerIcon} />
-        </Button>
-
-
-    </View>
-
-  );
+const SendFoodScreen = () => {
+  return <View style={styles.Header}></View>;
 };
 
 export default SendFoodScreen;
@@ -32,7 +20,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: COLORS.WHITE,
   },
- 
+  HeaderText: {
+    fontSize: 21,
+    color: COLORS.WHITE,
+  },
 });
-
-

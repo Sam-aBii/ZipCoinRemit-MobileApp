@@ -18,9 +18,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar, StyleSheet, TouchableOpacity } from "react-native";
 
 import Typograpghy from "../Theme";
-import BasicKyc from "../Screens/KycForms/BasicKyc"
-import StandardKyc from "../Screens/KycForms/StandardKyc"
-import AdvancedKyc from "../Screens/KycForms/AdvanceKyc"
+import BasicKyc from "../Screens/KycForms/BasicKyc";
+import StandardKyc from "../Screens/KycForms/StandardKyc";
+import AdvancedKyc from "../Screens/KycForms/AdvanceKyc";
 
 const { COLORS } = Typograpghy;
 
@@ -35,12 +35,10 @@ export const KycProcessScreen = ({ navigation }) => {
           <CardItem>
             <Icon name="document" style={styles.BasicIcon} />
             <Text style={styles.SendLimitsBasic}>Send Limits</Text>
-            <Text style={styles.KycCardNum}>$5.0 - $1,000</Text>
+            <Text style={styles.KycCardNum}>$5.00 - $1,000</Text>
           </CardItem>
           <CardItem>
-            <TouchableOpacity
-              onPress={() => navigation.navigate("Basic")}
-            >
+            <TouchableOpacity onPress={() => navigation.navigate("Basic")}>
               <Text style={styles.SubmitKycBasic}>Submit Your KYC</Text>
             </TouchableOpacity>
           </CardItem>
@@ -57,7 +55,7 @@ export const KycProcessScreen = ({ navigation }) => {
             <Text style={styles.KycCardNum}>$1,001 - $2,999</Text>
           </CardItem>
           <CardItem>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Standard")}>
               <Text style={styles.SubmitKycAdvance}>Submit Your KYC</Text>
             </TouchableOpacity>
           </CardItem>
@@ -74,7 +72,7 @@ export const KycProcessScreen = ({ navigation }) => {
             <Text style={styles.KycCardNum}>$3,000+</Text>
           </CardItem>
           <CardItem>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={() => navigation.navigate("Advanced")}>
               <Text style={styles.SubmitKycStandard}>Submit Your KYC</Text>
             </TouchableOpacity>
           </CardItem>
