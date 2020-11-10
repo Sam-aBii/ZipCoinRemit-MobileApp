@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Icon, CardItem, Card, Segment } from "native-base";
-import ReferTable from "../utils/ReferTable"
+import ReferTable from "../utils/ReferTable";
+import copy from "copy-to-clipboard";
 
 import {
   View,
@@ -12,12 +13,12 @@ import {
   Dimensions,
 } from "react-native";
 
-
 const { width } = Dimensions.get("window");
 const height = width * 0.6;
 
 import Typograpghy from "../Theme";
 import { TextInput } from "react-native-paper";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const { COLORS } = Typograpghy;
 
 const images = [
@@ -28,6 +29,7 @@ const images = [
   "https://stormy-hamlet-40315.herokuapp.com/static/media/refer7.df6bb8d7.jpg",
 ];
 const ReferAndEarnScreen = ({ navigation }) => {
+  const [code, setCode] = useState("DQCRGH");
   return (
     <ScrollView>
       <View style={styles.Header}>
@@ -70,10 +72,25 @@ const ReferAndEarnScreen = ({ navigation }) => {
       <Card>
         <Text style={styles.ReferalHeading}>Referral Highlights</Text>
         <CardItem>
-          <TextInput placeholder="DQCRGH" disabled style={styles.TextInput} />
-          <Button bordered warning style={styles.ButtonCopy}>
-            <Text>COPY</Text>
-          </Button>
+          <TextInput
+            placeholder="FT9142"
+            value={code}
+            disabled
+            style={styles.TextInput}
+            onChange={(e) => setCode(e.target.value)}
+          />
+          <TouchableOpacity>
+            <Button
+              onClick={() => {
+                copy(code);
+              }}
+              bordered
+              warning
+              style={styles.ButtonCopy}
+            >
+              <Text>COPY</Text>
+            </Button>
+          </TouchableOpacity>
         </CardItem>
         <Text style={styles.ReferalText}>
           Every 5th successful referral, your next money transfer is absolutely
