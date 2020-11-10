@@ -1,23 +1,13 @@
 import React from "react";
-import { Button, Icon, CardItem, Card, Segment } from "native-base";
-import ReferTable from "../utils/ReferTable"
+import { Button, Icon, CardItem, Card } from "native-base";
+import { View, StyleSheet, Text, StatusBar, Image, ScrollView, Dimensions } from "react-native";
+import { TextInput } from "react-native-paper";
+import ReferTable from "../utils/ReferTable";
 
-import {
-  View,
-  StyleSheet,
-  Text,
-  StatusBar,
-  Image,
-  ScrollView,
-  Dimensions,
-} from "react-native";
-
+import Typograpghy from "../Theme";
 
 const { width } = Dimensions.get("window");
 const height = width * 0.6;
-
-import Typograpghy from "../Theme";
-import { TextInput } from "react-native-paper";
 const { COLORS } = Typograpghy;
 
 const images = [
@@ -27,72 +17,53 @@ const images = [
   "https://stormy-hamlet-40315.herokuapp.com/static/media/refer6.3b31fc84.jpg",
   "https://stormy-hamlet-40315.herokuapp.com/static/media/refer7.df6bb8d7.jpg",
 ];
-const ReferAndEarnScreen = ({ navigation }) => {
-  return (
-    <ScrollView>
-      <View style={styles.Header}>
-        <StatusBar
-          backgroundColor={COLORS.SECONDARY}
-          barStyle="light-content"
-        />
-        <Button transparent>
-          <Icon
-            name="menu"
-            onPress={() => navigation.openDrawer()}
-            style={styles.DrawerIcon}
-          />
-          <Text style={styles.HeaderText}>Refer & Earn</Text>
+const ReferAndEarnScreen = ({ navigation }) => (
+  <ScrollView>
+    <View style={styles.Header}>
+      <StatusBar backgroundColor={COLORS.SECONDARY} barStyle="light-content" />
+      <Button transparent>
+        <Icon name="menu" onPress={() => navigation.openDrawer()} style={styles.DrawerIcon} />
+        <Text style={styles.HeaderText}>Refer & Earn</Text>
+      </Button>
+    </View>
+    <View style={styles.CourselHead}>
+      <ScrollView showsHorizontalScrollIndicator={false} pagingEnabled horizontal style={{ width, height }}>
+        {images.map((image, i) => (
+          <Image key={i} source={{ uri: image }} style={styles.CourselImage} />
+        ))}
+      </ScrollView>
+      <View style={styles.Pagination}>
+        {images.map((i) => (
+          <Text key={i} style={styles.PaginationDot}>
+            ⬤
+          </Text>
+        ))}
+      </View>
+    </View>
+    <Card>
+      <Text style={styles.ReferalHeading}>Referral Highlights</Text>
+      <CardItem>
+        <TextInput placeholder="DQCRGH" disabled style={styles.TextInput} />
+        <Button bordered warning style={styles.ButtonCopy}>
+          <Text>COPY</Text>
         </Button>
-      </View>
-      <View style={styles.CourselHead}>
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          pagingEnabled
-          horizontal
-          style={{ width, height }}
-        >
-          {images.map((image, index) => (
-            <Image
-              key={index}
-              source={{ uri: image }}
-              style={styles.CourselImage}
-            />
-          ))}
-        </ScrollView>
-        <View style={styles.Pagination}>
-          {images.map((i, k) => (
-            <Text key={k} style={styles.PaginationDot}>
-              ⬤
-            </Text>
-          ))}
-        </View>
-      </View>
-      <Card>
-        <Text style={styles.ReferalHeading}>Referral Highlights</Text>
-        <CardItem>
-          <TextInput placeholder="DQCRGH" disabled style={styles.TextInput} />
-          <Button bordered warning style={styles.ButtonCopy}>
-            <Text>COPY</Text>
-          </Button>
-        </CardItem>
-        <Text style={styles.ReferalText}>
-          Every 5th successful referral, your next money transfer is absolutely
-          FREE ZIPCASH. So refer as many friends and earn unlimited FREE
-          transactions.
-        </Text>
-      </Card>
-      <View>
-        <Button block rounded style={styles.ShareButton}>
-          <Icon name="share" style={{ color: COLORS.WHITE }} />
-          <Text style={styles.ButtonText}>SHARE</Text>
-        </Button>
-      </View>
-      <View>
-        <ReferTable />
-      </View>
-    </ScrollView>
-  );
-};
+      </CardItem>
+      <Text style={styles.ReferalText}>
+        Every 5th successful referral, your next money transfer is absolutely FREE ZIPCASH. So refer as many friends and earn
+        unlimited FREE transactions.
+      </Text>
+    </Card>
+    <View>
+      <Button block rounded style={styles.ShareButton}>
+        <Icon name="share" style={{ color: COLORS.WHITE }} />
+        <Text style={styles.ButtonText}>SHARE</Text>
+      </Button>
+    </View>
+    <View>
+      <ReferTable />
+    </View>
+  </ScrollView>
+);
 
 export default ReferAndEarnScreen;
 

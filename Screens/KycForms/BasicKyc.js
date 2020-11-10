@@ -1,58 +1,39 @@
 import React from "react";
 import { Button, Icon } from "native-base";
 
-import { View, StyleSheet, Text, TextInput } from "react-native";
+import { View, StyleSheet, Text, TextInput, Platform } from "react-native";
 
 import Typograpghy from "../../Theme";
+
 const { COLORS } = Typograpghy;
 
-import FontAwesome from "react-native-vector-icons/FontAwesome";
+const BasicKyc = ({ navigation }) => (
+  <View>
+    <View style={styles.Header}>
+      <Button transparent>
+        <Icon name="menu" onPress={() => navigation.openDrawer()} style={styles.DrawerIcon} />
+        <Text style={styles.HeaderText}>Basic KYC</Text>
+      </Button>
+    </View>
 
-const BasicKyc = ({ navigation }) => {
-  return (
-    <View>
-      <View style={styles.Header}>
-        <Button transparent>
-          <Icon
-            name="menu"
-            onPress={() => navigation.openDrawer()}
-            style={styles.DrawerIcon}
-          />
-          <Text style={styles.HeaderText}>Basic KYC</Text>
-        </Button>
+    <View style={styles.NotedText}>
+      <Text>
+        To continue with sending money, you need to verify one of the Know Your Customer (KYC) processes. Thank you.
+      </Text>
+    </View>
+    <View style={styles.BasicKycForm}>
+      <View style={styles.action}>
+        <TextInput style={styles.textInput} placeholder="Enter Full Name" autoCapitalize="none" />
       </View>
-
-      <View style={styles.NotedText}>
-        <Text>
-          To continue with sending money, you need to verify one of the Know
-          Your Customer (KYC) processes. Thank you.
-        </Text>
+      <View style={styles.action}>
+        <TextInput style={styles.textInput} placeholder="Enter Email Address" autoCapitalize="none" />
       </View>
-      <View style={styles.BasicKycForm}>
-        <View style={styles.action}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Enter Full Name"
-            autoCapitalize="none"
-          />
-        </View>
-        <View style={styles.action}>
-          <TextInput
-            style={styles.textInput}
-            placeholder="Enter Email Address"
-            autoCapitalize="none"
-          />
-        </View>
-        <View>
-          <TextInput 
-          
-          
-          />
-        </View>
+      <View>
+        <TextInput />
       </View>
     </View>
-  );
-};
+  </View>
+);
 
 export default BasicKyc;
 

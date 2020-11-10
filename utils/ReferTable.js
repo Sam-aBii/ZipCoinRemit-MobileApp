@@ -6,7 +6,7 @@ class ReferTable extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      tableHead: ["DATE","NAME", "EMAIL",  "NUMBER"],
+      tableHead: ["DATE", "NAME", "EMAIL", "NUMBER"],
       tableData: [
         ["07-11-20", "Abid", "3", "4"],
         ["07-11-20", "Arif", "c", "d"],
@@ -17,15 +17,11 @@ class ReferTable extends Component {
   }
 
   render() {
-    const state = this.state;
+    const { state } = this;
     return (
       <View style={styles.container}>
-        <Table borderStyle={{ borderWidth: 1}}>
-          <Row
-            data={state.tableHead}
-            style={styles.head}
-            textStyle={styles.text}
-          />
+        <Table borderStyle={{ borderWidth: 1 }}>
+          <Row data={state.tableHead} style={styles.head} textStyle={styles.text} />
           <Rows data={state.tableData} textStyle={styles.text} />
         </Table>
       </View>

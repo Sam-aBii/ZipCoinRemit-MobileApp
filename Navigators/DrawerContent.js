@@ -1,10 +1,11 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from "react";
 import { View, StyleSheet } from "react-native";
 import { Avatar, Title, Caption, Drawer } from "react-native-paper";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
-export function DrawerContent(props) {
+const DrawerContent = (props) => {
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
@@ -13,8 +14,7 @@ export function DrawerContent(props) {
             <View style={{ flexDirection: "row", marginTop: 15 }}>
               <Avatar.Image
                 source={{
-                  uri:
-                    "http://zipremit-user-admin-panel.surge.sh/static/media/profile.a4f71ae1.jpg",
+                  uri: "http://zipremit-user-admin-panel.surge.sh/static/media/profile.a4f71ae1.jpg",
                 }}
                 size={60}
               />
@@ -34,87 +34,49 @@ export function DrawerContent(props) {
 
           <Drawer.Section style={styles.drawerSection}>
             <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons name="home" color={color} size={size} />
-              )}
+              icon={({ color, size }) => <MaterialCommunityIcons name="home" color={color} size={size} />}
               label="Home"
               onPress={() => {
                 props.navigation.navigate("Dashboard");
               }}
             />
             <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="format-page-break"
-                  color={color}
-                  size={size}
-                />
-              )}
+              icon={({ color, size }) => <MaterialCommunityIcons name="format-page-break" color={color} size={size} />}
               label="KYC Process"
               onPress={() => {
                 props.navigation.navigate("KycProcessScreen");
               }}
             />
             <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="arrow-expand"
-                  color={color}
-                  size={size}
-                />
-              )}
+              icon={({ color, size }) => <MaterialCommunityIcons name="arrow-expand" color={color} size={size} />}
               label="Transcations"
               onPress={() => {
                 props.navigation.navigate("TranscationsScreen");
               }}
             />
             <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="human-male-female"
-                  color={color}
-                  size={size}
-                />
-              )}
+              icon={({ color, size }) => <MaterialCommunityIcons name="human-male-female" color={color} size={size} />}
               label="Customers"
               onPress={() => {
                 props.navigation.navigate("CustomerScreen");
               }}
             />
             <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="cash-usd"
-                  color={color}
-                  size={size}
-                />
-              )}
+              icon={({ color, size }) => <MaterialCommunityIcons name="cash-usd" color={color} size={size} />}
               label="Payments"
               onPress={() => {
                 props.navigation.navigate("PaymentScreen");
               }}
             />
             <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="human-handsup"
-                  color={color}
-                  size={size}
-                />
-              )}
+              icon={({ color, size }) => <MaterialCommunityIcons name="human-handsup" color={color} size={size} />}
               label="Beneficiaries"
               onPress={() => {
                 props.navigation.navigate("BeneficiarieScreen");
               }}
             />
             <DrawerItem
-              icon={({ color, size }) => (
-                <MaterialCommunityIcons
-                  name="hand-pointing-up"
-                  color={color}
-                  size={size}
-                />
-              )}
+              icon={({ color, size }) => <MaterialCommunityIcons name="hand-pointing-up" color={color} size={size} />}
               label="Refer & Earn"
               onPress={() => {
                 props.navigation.navigate("ReferAndEarnScreen");
@@ -125,20 +87,14 @@ export function DrawerContent(props) {
       </DrawerContentScrollView>
       <Drawer.Section style={styles.bottomDraweSection}>
         <DrawerItem
-          icon={({ color, size }) => (
-            <MaterialCommunityIcons
-              name="exit-to-app"
-              color={color}
-              size={size}
-            />
-          )}
+          icon={({ color, size }) => <MaterialCommunityIcons name="exit-to-app" color={color} size={size} />}
           label="Sign Out"
           onPress={() => {}}
         />
       </Drawer.Section>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   drawerContent: {
@@ -185,3 +141,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
 });
+
+export default DrawerContent;

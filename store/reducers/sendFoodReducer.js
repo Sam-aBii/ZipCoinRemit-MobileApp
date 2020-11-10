@@ -24,7 +24,7 @@ import {
   setZWCities,
 } from "../actions/sendFoodActions";
 
-import { benefState } from "../shared/states";
+const benefState = {}; // TODO: Add properties into this object to work properly
 
 const initialState = {
   cart: JSON.parse(localStorage.getItem("cart")) || [],
@@ -37,7 +37,12 @@ const initialState = {
   agent: "kim-kebab",
   agentLoc: "newlands",
   agentPhone: "+263343848168761",
-  newBenef: { ...benefState.newBenef, agent: "", agentLoc: "", agentPhone: "" },
+  newBenef: {
+    ...benefState.newBenef,
+    agent: "",
+    agentLoc: "",
+    agentPhone: "",
+  },
   hamperAmountInCAD: 0,
   zwCities: [],
 };

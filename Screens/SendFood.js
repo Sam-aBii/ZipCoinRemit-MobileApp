@@ -1,14 +1,12 @@
 import React from "react";
-import { Button, Icon } from "native-base";
 
-import { View, StyleSheet, Text, StatusBar } from "react-native";
+import { View, StyleSheet } from "react-native";
 
 import Typograpghy from "../Theme";
+
 const { COLORS } = Typograpghy;
 
-const SendFoodScreen = () => {
-  return <View style={styles.Header}></View>;
-};
+const SendFoodScreen = () => <View style={styles.Header} />;
 
 export default SendFoodScreen;
 

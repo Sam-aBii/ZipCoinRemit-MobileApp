@@ -9,16 +9,13 @@ import ForgotPassword from "../Screens/ForgotPassword";
 
 const RootStack = createStackNavigator();
 
-const RootStackScreen = () => {
-  return (
-    <RootStack.Navigator headerMode="none">
-      <RootStack.Screen name="SplashScreen" component={SplashScreen} />
-      <RootStack.Screen name="SignInScreen" component={SignInScreen} />
-      <RootStack.Screen name="SignUpScreen" component={SignUpScreen} />
-      <RootStack.Screen name="ForgotPassword" component={ForgotPassword} />
-
-    </RootStack.Navigator>
-  );
-};
+const RootStackScreen = () => (
+  <RootStack.Navigator headerMode="none">
+    <RootStack.Screen name="SplashScreen" component={SplashScreen} />
+    <RootStack.Screen name="SignInScreen" component={SignInScreen} />
+    <RootStack.Screen name="SignUpScreen" component={SignUpScreen} />
+    <RootStack.Screen name="ForgotPassword" component={ForgotPassword} />
+  </RootStack.Navigator>
+);
 
 export default RootStackScreen;

@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Platform } from "react-native";
 import { Button } from "native-base";
 import * as Animatable from "react-native-animatable";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 
 import Typograpghy from "../Theme";
+
 const { COLORS } = Typograpghy;
 
 const SignInScreen = ({ navigation }) => {
@@ -24,7 +18,7 @@ const SignInScreen = ({ navigation }) => {
   });
 
   const textInputChange = (val) => {
-    if (val.length != 0) {
+    if (val.length !== 0) {
       setData({
         ...data,
         email: val,
@@ -58,7 +52,7 @@ const SignInScreen = ({ navigation }) => {
       <View style={styles.header}>
         <Text style={styles.text_header}>Welcome</Text>
         <Text style={styles.text_header1}>Fast.Secure.Low Cost</Text>
-        <Text style={styles.text_header2}>"A Service you can trust!"</Text>
+        <Text style={styles.text_header2}>`&quot;`A Service you can trust!`&quot;`</Text>
       </View>
       <Animatable.View animation="fadeInUp" style={styles.footer}>
         <Text style={styles.text_footer}>Email</Text>
@@ -82,7 +76,7 @@ const SignInScreen = ({ navigation }) => {
           <TextInput
             style={styles.textInput}
             placeholder="Enter Your Password"
-            secureTextEntry={data.secureTextEntry ? true : false}
+            secureTextEntry={!!data.secureTextEntry}
             onChangeText={(val) => handlePasswordChange(val)}
           />
 
@@ -98,9 +92,7 @@ const SignInScreen = ({ navigation }) => {
         </View>
         <View style={styles.button}>
           <Button rounded block style={{ backgroundColor: COLORS.SECONDARY }}>
-            <Text style={{ color: COLORS.WHITE, fontWeight: "bold" }}>
-              Sign In
-            </Text>
+            <Text style={{ color: COLORS.WHITE, fontWeight: "bold" }}>Sign In</Text>
           </Button>
         </View>
         <TouchableOpacity>
@@ -113,9 +105,7 @@ const SignInScreen = ({ navigation }) => {
               navigation.navigate("SignUpScreen");
             }}
           >
-            <Text style={{ color: COLORS.SECONDARY, fontWeight: "bold" }}>
-              Sign Up
-            </Text>
+            <Text style={{ color: COLORS.SECONDARY, fontWeight: "bold" }}>Sign Up</Text>
           </Button>
         </TouchableOpacity>
         <TouchableOpacity

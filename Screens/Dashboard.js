@@ -1,97 +1,72 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
-import {
-  Container,
-  Content,
-  Card,
-  CardItem,
-  Body,
-  Text,
-  Thumbnail,
-} from "native-base";
+import { Container, Content, Card, CardItem, Body, Text, Thumbnail } from "native-base";
 import { View } from "react-native-animatable";
 
 import Typograpghy from "../Theme";
+
 const { COLORS } = Typograpghy;
 
-const DashboardScreen = () => {
-  return (
-    <Container>
-      <Content style={styles.Content}>
-        <View style={styles.header}>
-          <Text style={styles.headerText}>AVAILABLE BALANCES</Text>
-        </View>
-        <Card style={styles.Card}>
-          <CardItem style={styles.CardItems}>
-            <Body>
-              <Text style={styles.cardTitle}>CAD (Canadian Dollar)</Text>
-              <Thumbnail
-                style={styles.ThumbnailLogo}
-                square
-                source={require("../assets/Dashboard/canadian-dollar.png")}
-              />
-              <Text style={styles.cardText}>549.23</Text>
-            </Body>
-          </CardItem>
-        </Card>
-        <Card style={styles.Card}>
-          <CardItem style={styles.CardItems}>
-            <Body>
-              <Text style={styles.cardTitle}>USD (United State Dollar)</Text>
-              <Thumbnail
-                style={styles.ThumbnailLogo}
-                square
-                source={require("../assets/Dashboard/dollar-coin.png")}
-              />
-              <Text style={styles.cardText}>549.23</Text>
-            </Body>
-          </CardItem>
-        </Card>
-        <Card style={styles.Card}>
-          <CardItem style={styles.CardItems}>
-            <Body>
-              <Text style={styles.cardTitle}>GBP (British Pound)</Text>
-              <Thumbnail
-                style={styles.ThumbnailLogo}
-                square
-                source={require("../assets/Dashboard/pound-sterling.png")}
-              />
-              <Text style={styles.cardText}>549.23</Text>
-            </Body>
-          </CardItem>
-        </Card>
-        <Card style={styles.Card}>
-          <CardItem style={styles.CardItems}>
-            <Body>
-              <Text style={styles.cardTitle}>EURO (Euro)</Text>
-              <Thumbnail
-                style={styles.ThumbnailLogo}
-                square
-                source={require("../assets/Dashboard/euro.png")}
-              />
-              <Text style={styles.cardText}>549.23</Text>
-            </Body>
-          </CardItem>
-        </Card>
-        <Card style={styles.Card}>
-          <CardItem style={styles.CardItems}>
-            <Body>
-              <Text style={styles.cardTitle}>RAND (South Africian Rand)</Text>
+const DashboardScreen = () => (
+  <Container>
+    <Content style={styles.Content}>
+      <View style={styles.header}>
+        <Text style={styles.headerText}>AVAILABLE BALANCES</Text>
+      </View>
+      <Card style={styles.Card}>
+        <CardItem style={styles.CardItems}>
+          <Body>
+            <Text style={styles.cardTitle}>CAD (Canadian Dollar)</Text>
+            <Thumbnail style={styles.ThumbnailLogo} square source={require("../assets/Dashboard/canadian-dollar.png")} />
+            <Text style={styles.cardText}>549.23</Text>
+          </Body>
+        </CardItem>
+      </Card>
+      <Card style={styles.Card}>
+        <CardItem style={styles.CardItems}>
+          <Body>
+            <Text style={styles.cardTitle}>USD (United State Dollar)</Text>
+            <Thumbnail style={styles.ThumbnailLogo} square source={require("../assets/Dashboard/dollar-coin.png")} />
+            <Text style={styles.cardText}>549.23</Text>
+          </Body>
+        </CardItem>
+      </Card>
+      <Card style={styles.Card}>
+        <CardItem style={styles.CardItems}>
+          <Body>
+            <Text style={styles.cardTitle}>GBP (British Pound)</Text>
+            <Thumbnail style={styles.ThumbnailLogo} square source={require("../assets/Dashboard/pound-sterling.png")} />
+            <Text style={styles.cardText}>549.23</Text>
+          </Body>
+        </CardItem>
+      </Card>
+      <Card style={styles.Card}>
+        <CardItem style={styles.CardItems}>
+          <Body>
+            <Text style={styles.cardTitle}>EURO (Euro)</Text>
+            <Thumbnail style={styles.ThumbnailLogo} square source={require("../assets/Dashboard/euro.png")} />
+            <Text style={styles.cardText}>549.23</Text>
+          </Body>
+        </CardItem>
+      </Card>
+      <Card style={styles.Card}>
+        <CardItem style={styles.CardItems}>
+          <Body>
+            <Text style={styles.cardTitle}>RAND (South Africian Rand)</Text>
 
-              <Thumbnail
-                style={styles.ThumbnailLogo}
-                square
-                color={COLORS.SECONDARY}
-                source={require("../assets/Dashboard/south-african-rand.png")}
-              />
-              <Text style={styles.cardText}>549.23</Text>
-            </Body>
-          </CardItem>
-        </Card>
-      </Content>
-    </Container>
-  );
-};
+            <Thumbnail
+              style={styles.ThumbnailLogo}
+              square
+              color={COLORS.SECONDARY}
+              source={require("../assets/Dashboard/south-african-rand.png")}
+            />
+            <Text style={styles.cardText}>549.23</Text>
+          </Body>
+        </CardItem>
+      </Card>
+    </Content>
+  </Container>
+);
 
 export default DashboardScreen;
 

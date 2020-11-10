@@ -8,9 +8,7 @@ export const handleEditCardChange = (state, action) => {
   return { ...state, [name]: value };
 };
 
-export const setEditingCardNumber = (state, action) => {
-  return { ...state, editingCardNumber: action.payload };
-};
+export const setEditingCardNumber = (state, action) => ({ ...state, editingCardNumber: action.payload });
 
 export const updateEditedCard = (state) => {
   const { cards, editCreditCardExpiry, editingCardNumber } = state;

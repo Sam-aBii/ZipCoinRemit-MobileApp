@@ -1,8 +1,4 @@
-import {
-  handleBenefChange,
-  selectBeneficiary,
-  toggleBenefType,
-} from "./sendFoodActions";
+import { handleBenefChange, selectBeneficiary, toggleBenefType } from "./sendFoodActions";
 
 export const getBenefCountry = (state, action) => ({
   ...state,
