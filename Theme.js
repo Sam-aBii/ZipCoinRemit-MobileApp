@@ -1,13 +1,13 @@
 export default {
   COLORS: {
-    DEFAULT: "#172B4D",
+    DEFAULT: "#242e55",
     SECONDARY: "#dba84e",
     MUTED: "#ADB5BD",
     INPUT: "#DCDCDC",
     INPUT_SUCCESS: "#7BDEB2",
     INPUT_ERROR: "#FCB3A4",
-    ACTIVE: "#242e55", // same as primary
-    BUTTON_COLOR: "#dba84e", // wtf
+    ACTIVE: "#242e55",
+    BUTTON_COLOR: "#dba84e",
     PLACEHOLDER: "#9FA5AA",
     SWITCH_ON: "#242e55",
     SWITCH_OFF: "#D4D9DD",

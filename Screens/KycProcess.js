@@ -17,12 +17,12 @@ import {
 import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar, StyleSheet, TouchableOpacity } from "react-native";
 
-import Typograpghy from "../Theme";
+import theme from "../Theme";
 import BasicKyc from "./KycForms/BasicKyc";
 import StandardKyc from "./KycForms/StandardKyc";
 import AdvancedKyc from "./KycForms/AdvanceKyc";
 
-const { COLORS } = Typograpghy;
+const { COLORS } = theme;
 
 const RootStack = createStackNavigator();
 

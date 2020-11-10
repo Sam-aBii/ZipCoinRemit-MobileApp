@@ -11,6 +11,9 @@ import SettingScreen from "../Screens/Setting";
 import SendMoneyScreen from "../Screens/SendMoney";
 import AirTimeTopScreen from "../Screens/AirTimeTopUp";
 import SendFoodScreen from "../Screens/SendFood";
+import theme from "../Theme";
+
+const { COLORS } = theme;
 
 const HomeStack = createStackNavigator();
 const SettingStack = createStackNavigator();
@@ -19,13 +22,13 @@ const SendFoodStack = createStackNavigator();
 const Tab = createMaterialBottomTabNavigator();
 
 const MainTabScreen = () => (
-  <Tab.Navigator initialRouteName="DashboardScreen" style={{ backgroundColor: "#dba84e" }}>
+  <Tab.Navigator initialRouteName="DashboardScreen" style={{ backgroundColor: COLORS.SECONDARY }}>
     <Tab.Screen
       name="Dashboard"
       component={HomeStackScreen}
       options={{
         tabBarLabel: "Dashboard",
-        tabBarColor: "#dba84e",
+        tabBarColor: COLORS.SECONDARY,
         tabBarIcon: ({ color }) => <MaterialCommunityIcons name="home" color={color} size={26} />,
       }}
     />
@@ -34,7 +37,7 @@ const MainTabScreen = () => (
       component={SendMoneyStackScreen}
       options={{
         tabBarLabel: "Send Money",
-        tabBarColor: "#dba84e",
+        tabBarColor: COLORS.SECONDARY,
         tabBarIcon: ({ color }) => <MaterialCommunityIcons name="cash-usd" color={color} size={26} />,
       }}
     />
@@ -43,7 +46,7 @@ const MainTabScreen = () => (
       component={AirTimeTopStackScreen}
       options={{
         tabBarLabel: "AirTime TopUp",
-        tabBarColor: "#dba84e",
+        tabBarColor: COLORS.SECONDARY,
         tabBarIcon: ({ color }) => <MaterialCommunityIcons name="application-export" color={color} size={26} />,
       }}
     />
@@ -52,7 +55,7 @@ const MainTabScreen = () => (
       component={SendFoodStackScreen}
       options={{
         tabBarLabel: "Send Food",
-        tabBarColor: "#dba84e",
+        tabBarColor: COLORS.SECONDARY,
         tabBarIcon: ({ color }) => <MaterialCommunityIcons name="food" color={color} size={26} />,
       }}
     />
@@ -61,7 +64,7 @@ const MainTabScreen = () => (
       component={SettingStackScreen}
       options={{
         tabBarLabel: "Profile",
-        tabBarColor: "#dba84e",
+        tabBarColor: COLORS.SECONDARY,
         tabBarIcon: ({ color }) => <MaterialCommunityIcons name="account-settings" color={color} size={26} />,
       }}
     />
@@ -74,9 +77,9 @@ const HomeStackScreen = ({ navigation }) => (
   <HomeStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#dba84e",
+        backgroundColor: COLORS.SECONDARY,
       },
-      headerTintColor: "#fff",
+      headerTintColor: COLORS.WHITE,
     }}
   >
     <HomeStack.Screen
@@ -85,7 +88,7 @@ const HomeStackScreen = ({ navigation }) => (
       options={{
         title: "Dashboard",
         headerLeft: () => (
-          <Icon.Button name="navicon" size={25} backgroundColor="#dba84e" onPress={() => navigation.openDrawer()} />
+          <Icon.Button name="navicon" size={25} backgroundColor={COLORS.SECONDARY} onPress={() => navigation.openDrawer()} />
         ),
       }}
     />
@@ -96,9 +99,9 @@ const SettingStackScreen = ({ navigation }) => (
   <SettingStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#dba84e",
+        backgroundColor: COLORS.SECONDARY,
       },
-      headerTintColor: "#fff",
+      headerTintColor: COLORS.WHITE,
     }}
   >
     <SettingStack.Screen
@@ -106,7 +109,7 @@ const SettingStackScreen = ({ navigation }) => (
       component={SettingScreen}
       options={{
         headerLeft: () => (
-          <Icon.Button name="navicon" size={25} backgroundColor="#dba84e" onPress={() => navigation.openDrawer()} />
+          <Icon.Button name="navicon" size={25} backgroundColor={COLORS.SECONDARY} onPress={() => navigation.openDrawer()} />
         ),
       }}
     />
@@ -117,9 +120,9 @@ const SendMoneyStackScreen = ({ navigation }) => (
   <SendMoneyStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#dba84e",
+        backgroundColor: COLORS.SECONDARY,
       },
-      headerTintColor: "#fff",
+      headerTintColor: COLORS.WHITE,
     }}
   >
     <SendMoneyStack.Screen
@@ -127,7 +130,7 @@ const SendMoneyStackScreen = ({ navigation }) => (
       component={SendMoneyScreen}
       options={{
         headerLeft: () => (
-          <Icon.Button name="navicon" size={25} backgroundColor="#dba84e" onPress={() => navigation.openDrawer()} />
+          <Icon.Button name="navicon" size={25} backgroundColor={COLORS.SECONDARY} onPress={() => navigation.openDrawer()} />
         ),
       }}
     />
@@ -138,9 +141,9 @@ const AirTimeTopStackScreen = ({ navigation }) => (
   <SendFoodStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#dba84e",
+        backgroundColor: COLORS.SECONDARY,
       },
-      headerTintColor: "#fff",
+      headerTintColor: COLORS.WHITE,
     }}
   >
     <SendFoodStack.Screen
@@ -148,7 +151,7 @@ const AirTimeTopStackScreen = ({ navigation }) => (
       component={AirTimeTopScreen}
       options={{
         headerLeft: () => (
-          <Icon.Button name="navicon" size={25} backgroundColor="#dba84e" onPress={() => navigation.openDrawer()} />
+          <Icon.Button name="navicon" size={25} backgroundColor={COLORS.SECONDARY} onPress={() => navigation.openDrawer()} />
         ),
       }}
     />
@@ -159,9 +162,9 @@ const SendFoodStackScreen = ({ navigation }) => (
   <SendFoodStack.Navigator
     screenOptions={{
       headerStyle: {
-        backgroundColor: "#dba84e",
+        backgroundColor: COLORS.SECONDARY,
       },
-      headerTintColor: "#fff",
+      headerTintColor: COLORS.WHITE,
     }}
   >
     <SendFoodStack.Screen
@@ -169,7 +172,7 @@ const SendFoodStackScreen = ({ navigation }) => (
       component={SendFoodScreen}
       options={{
         headerLeft: () => (
-          <Icon.Button name="navicon" size={25} backgroundColor="#dba84e" onPress={() => navigation.openDrawer()} />
+          <Icon.Button name="navicon" size={25} backgroundColor={COLORS.SECONDARY} onPress={() => navigation.openDrawer()} />
         ),
       }}
     />

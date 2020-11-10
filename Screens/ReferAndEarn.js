@@ -2,8 +2,9 @@ import React from "react";
 import { Button, Icon, CardItem, Card } from "native-base";
 import { View, StyleSheet, Text, StatusBar, Image, ScrollView, Dimensions } from "react-native";
 import { TextInput } from "react-native-paper";
-import ReferTable from "../utils/ReferTable";
+import { SafeAreaView } from "react-native-safe-area-context";
 
+import ReferTable from "../utils/ReferTable";
 import Typograpghy from "../Theme";
 
 const { width } = Dimensions.get("window");
@@ -18,12 +19,12 @@ const images = [
   "https://stormy-hamlet-40315.herokuapp.com/static/media/refer7.df6bb8d7.jpg",
 ];
 const ReferAndEarnScreen = ({ navigation }) => (
-  <ScrollView>
+  <SafeAreaView style={{ flex: 1 }}>
     <View style={styles.Header}>
       <StatusBar backgroundColor={COLORS.SECONDARY} barStyle="light-content" />
       <Button transparent>
         <Icon name="menu" onPress={() => navigation.openDrawer()} style={styles.DrawerIcon} />
-        <Text style={styles.HeaderText}>Refer & Earn</Text>
+        <Text style={styles.HeaderText}>Refer & Earn </Text>
       </Button>
     </View>
     <View style={styles.CourselHead}>
@@ -41,7 +42,7 @@ const ReferAndEarnScreen = ({ navigation }) => (
       </View>
     </View>
     <Card>
-      <Text style={styles.ReferalHeading}>Referral Highlights</Text>
+      <Text style={styles.ReferalHeading}>Referral Highlights </Text>
       <CardItem>
         <TextInput placeholder="DQCRGH" disabled style={styles.TextInput} />
         <Button bordered warning style={styles.ButtonCopy}>
@@ -62,7 +63,7 @@ const ReferAndEarnScreen = ({ navigation }) => (
     <View>
       <ReferTable />
     </View>
-  </ScrollView>
+  </SafeAreaView>
 );
 
 export default ReferAndEarnScreen;
@@ -80,11 +81,8 @@ const styles = StyleSheet.create({
     color: COLORS.WHITE,
   },
   CourselHead: {
-    marginTop: 7,
     width,
     height,
-    paddingLeft: 5,
-    paddingRight: 5,
   },
   CourselImage: {
     width,
@@ -101,17 +99,12 @@ const styles = StyleSheet.create({
     color: COLORS.WHITE,
     margin: 3,
   },
-  TextInput: {
-    width: "80%",
-    height: 50,
-    borderRadius: 8,
-  },
+  TextInput: { flexGrow: 1, height: 44, borderBottomLeftRadius: 8, borderTopLeftRadius: 8 },
   ButtonCopy: {
-    width: 65,
-    margin: 5,
-    paddingLeft: 12,
-    borderRadius: 8,
+    borderBottomRightRadius: 8,
+    borderTopRightRadius: 8,
     borderColor: COLORS.DEFAULT,
+    paddingHorizontal: 4,
   },
   ReferalHeading: {
     fontSize: 22,
@@ -121,8 +114,8 @@ const styles = StyleSheet.create({
   },
   ReferalText: {
     fontSize: 15,
-    paddingLeft: 12,
-    paddingBottom: 12,
+    padding: 16,
+    paddingTop: 0,
     color: COLORS.DEFAULT,
   },
   ButtonText: {
