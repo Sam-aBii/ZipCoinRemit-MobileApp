@@ -1,26 +1,13 @@
 import React from "react";
-import {
-  Container,
-  Header,
-  Title,
-  Content,
-  Button,
-  Left,
-  Right,
-  Body,
-  Icon,
-  Text,
-  Card,
-  CardItem,
-  Accordion,
-} from "native-base";
+import { Container, Content, Body, Icon, Text, Card, CardItem, Accordion } from "native-base";
 import { createStackNavigator } from "@react-navigation/stack";
-import { StatusBar, StyleSheet, TouchableOpacity } from "react-native";
+import { StyleSheet, TouchableOpacity } from "react-native";
 
 import theme from "../Theme";
 import BasicKyc from "./KycForms/BasicKyc";
 import StandardKyc from "./KycForms/StandardKyc";
 import AdvancedKyc from "./KycForms/AdvanceKyc";
+import Header from "../components/shared/Header";
 
 const { COLORS } = theme;
 
@@ -82,18 +69,7 @@ export const KycProcessScreen = ({ navigation }) => {
   ];
   return (
     <Container>
-      <Header style={styles.Header}>
-        <StatusBar backgroundColor={COLORS.SECONDARY} barStyle="light-content" />
-        <Left>
-          <Button transparent>
-            <Icon name="menu" onPress={() => navigation.openDrawer()} />
-          </Button>
-        </Left>
-        <Body>
-          <Title>KYC Process</Title>
-        </Body>
-        <Right />
-      </Header>
+      <Header onPress={() => navigation.openDrawer()} screenTitle="KYC Process" />
       <Content>
         <Card style={styles.Card}>
           <CardItem style={styles.CardItems}>
