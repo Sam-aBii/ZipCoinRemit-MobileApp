@@ -1,12 +1,31 @@
-import React from "react";
+import React  from "react";
 import { Button, Icon } from "native-base";
+<<<<<<< HEAD
+import { View, StyleSheet, Text, TextInput } from "react-native";
+=======
 
 import { View, StyleSheet, Text, TextInput, Platform } from "react-native";
+>>>>>>> cacd7a7ef60ac20bdfe25c9e29ce6d4eb344d982
 
 import Typograpghy from "../../Theme";
 
 const { COLORS } = Typograpghy;
 
+<<<<<<< HEAD
+const BasicKyc = ({ navigation }) => {
+
+  return (
+    <View>
+      <View style={styles.Header}>
+        <Button transparent>
+          <Icon
+            name="menu"
+            onPress={() => navigation.openDrawer()}
+            style={styles.DrawerIcon}
+          />
+          <Text style={styles.HeaderText}>Basic KYC</Text>
+        </Button>
+=======
 const BasicKyc = ({ navigation }) => (
   <View>
     <View style={styles.Header}>
@@ -24,12 +43,58 @@ const BasicKyc = ({ navigation }) => (
     <View style={styles.BasicKycForm}>
       <View style={styles.action}>
         <TextInput style={styles.textInput} placeholder="Enter Full Name" autoCapitalize="none" />
+>>>>>>> cacd7a7ef60ac20bdfe25c9e29ce6d4eb344d982
       </View>
       <View style={styles.action}>
         <TextInput style={styles.textInput} placeholder="Enter Email Address" autoCapitalize="none" />
       </View>
+<<<<<<< HEAD
+      <View style={styles.BasicKycForm}>
+        <View style={styles.action}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Enter Full Name"
+            autoCapitalize="none"
+          />
+        </View>
+        <View style={styles.action}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Enter Email Address"
+            autoCapitalize="none"
+          />
+        </View>
+        <View style={styles.action}>
+          {/* <TextInput
+            style={styles.textInput}
+            placeholder="Country"
+            autoCapitalize="none"
+            onChange={(e) => {
+              const foundCountry = airtimeCountries.find(
+                (country) => country.CountryIso === e.target.value
+              );
+
+              setSelectedCountry(foundCountry);
+              setCountry(e.target.value);
+            }}
+            disabled={airtimeCountries.length < 1}
+            name="country"
+          />
+          <option value="" disabled>
+            {airtimeCountries.length > 0
+              ? "Select a country"
+              : "Loading countries..."}
+          </option>
+          {airtimeCountries.map((country) => (
+            <option key={country.CountryIso} value={country.CountryIso}>
+              {country.CountryName}
+            </option>
+          ))} */}
+        </View>
+=======
       <View>
         <TextInput />
+>>>>>>> cacd7a7ef60ac20bdfe25c9e29ce6d4eb344d982
       </View>
     </View>
   </View>
