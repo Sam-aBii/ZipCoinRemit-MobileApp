@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
+import { View } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 
 class ReferTable extends Component {
@@ -19,17 +19,13 @@ class ReferTable extends Component {
   render() {
     const { state } = this;
     return (
-      <View style={styles.container}>
+      <View>
         <Table borderStyle={{ borderWidth: 1 }}>
-          <Row data={state.tableHead} style={styles.head} textStyle={{ fontWeight: "bold", padding: 4 }} />
-          <Rows data={state.tableData} textStyle={styles.text} />
+          <Row data={state.tableHead} textStyle={{ fontWeight: "bold", padding: 4 }} />
+          <Rows data={state.tableData} textStyle={{ marginLeft: 4 }} />
         </Table>
       </View>
     );
   }
 }
 export default ReferTable;
-
-const styles = StyleSheet.create({
-  text: { marginLeft: 4 },
-});

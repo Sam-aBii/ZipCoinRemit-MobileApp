@@ -1,34 +1,36 @@
 import React from "react";
-import { Button, Icon } from "native-base";
+import { Button } from "native-base";
+import { Table, Row, Rows } from "react-native-table-component";
+import { View, Text } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import { View, StyleSheet, Text, StatusBar } from "react-native";
+import globalStyles from "../styles";
+import AddABeneficiary from "./Beneficiaries/AddABeneficiary";
+import CustomHeader from "../components/shared/Header";
 
-import Typograpghy from "../Theme";
-
-const { COLORS } = Typograpghy;
+const BeneficiaryStack = createStackNavigator();
 
 const BeneficiarieScreen = ({ navigation }) => (
-  <View style={styles.Header}>
-    <StatusBar backgroundColor={COLORS.SECONDARY} barStyle="light-content" />
-    <Button transparent>
-      <Icon name="menu" onPress={() => navigation.openDrawer()} style={styles.DrawerIcon} />
-      <Text style={styles.HeaderText}>Beneficiaries</Text>
+  <View>
+    <CustomHeader screenTitle="Beneficiaires" onPress={() => navigation.openDrawer()} />
+    <Table borderStyle={{ borderWidth: 1 }} style={{ margin: 4 }}>
+      <Row data={["Date", "Name", "Country", "Mobile", "Actions"]} textStyle={{ fontWeight: "bold", padding: 4 }} />
+      <Rows data={[]} textStyle={{ marginLeft: 4 }} />
+    </Table>
+    <Button
+      style={{ ...globalStyles.btnPrimary, marginLeft: "auto", margin: 4 }}
+      onPress={() => navigation.navigate("addABeneficiary")}
+    >
+      <Text style={globalStyles.btnPrimaryText}>Add a beneficiary</Text>
     </Button>
   </View>
 );
 
-export default BeneficiarieScreen;
+const BeneficiaryStackNavigator = () => (
+  <BeneficiaryStack.Navigator headerMode="none">
+    <BeneficiaryStack.Screen name="beneficiaries" component={BeneficiarieScreen} />
+    <BeneficiaryStack.Screen name="addABeneficiary" component={AddABeneficiary} />
+  </BeneficiaryStack.Navigator>
+);
 
-const styles = StyleSheet.create({
-  Header: {
-    backgroundColor: COLORS.SECONDARY,
-  },
-  DrawerIcon: {
-    fontSize: 30,
-    color: COLORS.WHITE,
-  },
-  HeaderText: {
-    fontSize: 21,
-    color: COLORS.WHITE,
-  },
-});
+export default BeneficiaryStackNavigator;
