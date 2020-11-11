@@ -18,9 +18,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import { StatusBar, StyleSheet, TouchableOpacity } from "react-native";
 
 import Typograpghy from "../Theme";
-import BasicKyc from "../Screens/KycForms/BasicKyc";
-import StandardKyc from "../Screens/KycForms/StandardKyc";
-import AdvancedKyc from "../Screens/KycForms/AdvanceKyc";
+import BasicKyc from "./KycForms/BasicKyc";
+import StandardKyc from "./KycForms/StandardKyc";
+import AdvancedKyc from "./KycForms/AdvanceKyc";
 
 const { COLORS } = Typograpghy;
 
@@ -83,10 +83,7 @@ export const KycProcessScreen = ({ navigation }) => {
   return (
     <Container>
       <Header style={styles.Header}>
-        <StatusBar
-          backgroundColor={COLORS.SECONDARY}
-          barStyle="light-content"
-        />
+        <StatusBar backgroundColor={COLORS.SECONDARY} barStyle="light-content" />
         <Left>
           <Button transparent>
             <Icon name="menu" onPress={() => navigation.openDrawer()} />
@@ -103,33 +100,27 @@ export const KycProcessScreen = ({ navigation }) => {
             <Body>
               <Text style={styles.kycHeaderText}>Know Your Customer (KYC)</Text>
               <Text style={styles.kycBottomText}>
-                For the safety of your information, please enter and review your
-                personal information correctly and accurately. You will not be
-                able to modify your personal information once the form has been
-                submitted.
+                For the safety of your information, please enter and review your personal information correctly and
+                accurately. You will not be able to modify your personal information once the form has been submitted.
               </Text>
             </Body>
           </CardItem>
         </Card>
         <Accordion dataArray={dataArray} icon="add" expandedIcon="remove" />
-        <Text style={styles.ImpText}>
-          * This is ONLY a one time KYC process completion.
-        </Text>
+        <Text style={styles.ImpText}>* This is ONLY a one time KYC process completion.</Text>
       </Content>
     </Container>
   );
 };
 
-const KycRootStack = () => {
-  return (
-    <RootStack.Navigator headerMode="none">
-      <RootStack.Screen name="KycScreen" component={KycProcessScreen} />
-      <RootStack.Screen name="Basic" component={BasicKyc} />
-      <RootStack.Screen name="Advanced" component={AdvancedKyc} />
-      <RootStack.Screen name="Standard" component={StandardKyc} />
-    </RootStack.Navigator>
-  );
-};
+const KycRootStack = () => (
+  <RootStack.Navigator headerMode="none">
+    <RootStack.Screen name="KycScreen" component={KycProcessScreen} />
+    <RootStack.Screen name="Basic" component={BasicKyc} />
+    <RootStack.Screen name="Advanced" component={AdvancedKyc} />
+    <RootStack.Screen name="Standard" component={StandardKyc} />
+  </RootStack.Navigator>
+);
 
 export default KycRootStack;
 

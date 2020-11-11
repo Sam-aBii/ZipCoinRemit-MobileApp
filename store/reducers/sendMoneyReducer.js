@@ -1,3 +1,11 @@
+import { handleBenefChange, selectBeneficiary, toggleBenefType } from "../actions/sendFoodActions";
+import {
+  getBenefCountry,
+  getBenefCountryFail,
+  setStateCities,
+  setStateCitiesFail,
+  setCountryStates,
+} from "../actions/sendMoneyActions";
 import {
   YOU_SEND,
   BENEF_GETS,
@@ -23,21 +31,7 @@ import {
   SET_COUNTRY_STATES,
 } from "../actionTypes";
 
-import { benefState } from "../shared/states";
-
-import {
-  handleBenefChange,
-  selectBeneficiary,
-  toggleBenefType,
-} from "../actions/sendFoodActions";
-
-import {
-  getBenefCountry,
-  getBenefCountryFail,
-  setStateCities,
-  setStateCitiesFail,
-  setCountryStates,
-} from "../actions/sendMoneyActions";
+const benefState = {}; // TODO: Add required props into this object to make this work fine
 
 const initialState = {
   youSend: 100,

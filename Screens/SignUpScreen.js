@@ -1,20 +1,13 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Platform } from "react-native";
 import { Button } from "native-base";
 import * as Animatable from "react-native-animatable";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
 
 import Typograpghy from "../Theme";
-const { COLORS } = Typograpghy;
 
+const { COLORS } = Typograpghy;
 
 const SignUpScreen = ({ navigation }) => {
   const [data, setData] = useState({
@@ -27,7 +20,7 @@ const SignUpScreen = ({ navigation }) => {
   });
 
   const textInputChange = (val) => {
-    if (val.length != 0) {
+    if (val.length !== 0) {
       setData({
         ...data,
         email: val,
@@ -73,17 +66,11 @@ const SignUpScreen = ({ navigation }) => {
       <View style={styles.header}>
         <Text style={styles.text_header}>Register Now!</Text>
         <Text style={styles.text_header1}>Simple & Easy</Text>
-       
-
       </View>
       <Animatable.View animation="fadeInUp" style={styles.footer}>
         <View style={styles.action}>
           <FontAwesome name="user-circle" color={COLORS.SECONDARY} size={20} />
-          <TextInput
-            style={styles.textInput}
-            placeholder="Enter Full Name"
-            autoCapitalize="none"
-          />
+          <TextInput style={styles.textInput} placeholder="Enter Full Name" autoCapitalize="none" />
         </View>
 
         <View style={styles.action}>
@@ -106,7 +93,7 @@ const SignUpScreen = ({ navigation }) => {
           <TextInput
             style={styles.textInput}
             placeholder="Enter Your Password"
-            secureTextEntry={data.secureTextEntry ? true : false}
+            secureTextEntry={!!data.secureTextEntry}
             onChangeText={(val) => handlePasswordChange(val)}
           />
 
@@ -126,7 +113,7 @@ const SignUpScreen = ({ navigation }) => {
           <TextInput
             style={styles.textInput}
             placeholder="Confirm Password"
-            secureTextEntry={data.confirm_secureTextEntry ? true : false}
+            secureTextEntry={!!data.confirm_secureTextEntry}
             onChangeText={(val) => handleConfirmPasswordChange(val)}
           />
 
@@ -143,10 +130,7 @@ const SignUpScreen = ({ navigation }) => {
 
         <View style={styles.action}>
           <FontAwesome name="share-square-o" color={COLORS.SECONDARY} size={20} />
-          <TextInput
-            style={styles.textInput}
-            placeholder="Referral Code (Optional)"
-          />
+          <TextInput style={styles.textInput} placeholder="Referral Code (Optional)" />
         </View>
         <View style={styles.button}>
           <Button rounded block style={{ backgroundColor: COLORS.SECONDARY }}>
@@ -163,9 +147,7 @@ const SignUpScreen = ({ navigation }) => {
               navigation.navigate("SignInScreen");
             }}
           >
-            <Text style={{ color: COLORS.SECONDARY, fontWeight: "bold" }}>
-              Sign In
-            </Text>
+            <Text style={{ color: COLORS.SECONDARY, fontWeight: "bold" }}>Sign In</Text>
           </Button>
         </TouchableOpacity>
       </Animatable.View>
@@ -201,9 +183,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
   },
   text_header1: {
-    color: COLORS.WHITE,
     fontSize: 20,
-    color: COLORS.SECONDARY
+    color: COLORS.SECONDARY,
   },
   text_footer: {
     color: COLORS.DEFAULT,

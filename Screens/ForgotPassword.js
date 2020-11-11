@@ -1,65 +1,46 @@
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  StatusBar,
-  TextInput,
-  TouchableOpacity,
-} from "react-native";
+import React from "react";
+import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Platform } from "react-native";
 import { Button } from "native-base";
 import * as Animatable from "react-native-animatable";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 
 import Typograpghy from "../Theme";
+
 const { COLORS } = Typograpghy;
 
-const ForgotPassword = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <StatusBar backgroundColor={COLORS.DEFAULT} barStyle="light-content" />
-      <View style={styles.header}>
-        <Text style={styles.text_header}>Recover your password!</Text>
-      </View>
-
-      <Animatable.View animation="fadeInUp" style={styles.footer}>
-        <View style={styles.action}>
-          <FontAwesome name="mail-forward" color={COLORS.SECONDARY} size={20} />
-          <TextInput
-            style={styles.textInput}
-            placeholder="Enter Your Email"
-            autoCapitalize="none"
-          />
-        </View>
-        <TouchableOpacity>
-          <Button
-            block
-            bordered
-            rounded
-            style={{ marginTop: 30, borderColor: COLORS.SECONDARY }}
-          >
-            <Text style={{ color: COLORS.SECONDARY, fontWeight: "bold" }}>
-              Reset Link
-            </Text>
-          </Button>
-        </TouchableOpacity>
-        <View style={styles.forgot_password}>
-          <Text style={styles.forgot_password_text}>
-            Already have an account?{" "}
-            <Text
-              onPress={() => {
-                navigation.navigate("SignInScreen");
-              }}
-              style={styles.forgot_password_textLink}
-            >
-              Sign In
-            </Text>
-          </Text>
-        </View>
-      </Animatable.View>
+const ForgotPassword = ({ navigation }) => (
+  <View style={styles.container}>
+    <StatusBar backgroundColor={COLORS.DEFAULT} barStyle="light-content" />
+    <View style={styles.header}>
+      <Text style={styles.text_header}>Recover your password!</Text>
     </View>
-  );
-};
+
+    <Animatable.View animation="fadeInUp" style={styles.footer}>
+      <View style={styles.action}>
+        <FontAwesome name="mail-forward" color={COLORS.SECONDARY} size={20} />
+        <TextInput style={styles.textInput} placeholder="Enter Your Email" autoCapitalize="none" />
+      </View>
+      <TouchableOpacity>
+        <Button block bordered rounded style={{ marginTop: 30, borderColor: COLORS.SECONDARY }}>
+          <Text style={{ color: COLORS.SECONDARY, fontWeight: "bold" }}>Reset Link</Text>
+        </Button>
+      </TouchableOpacity>
+      <View style={styles.forgot_password}>
+        <Text style={styles.forgot_password_text}>
+          Already have an account?
+          <Text
+            onPress={() => {
+              navigation.navigate("SignInScreen");
+            }}
+            style={styles.forgot_password_textLink}
+          >
+            Sign In
+          </Text>
+        </Text>
+      </View>
+    </Animatable.View>
+  </View>
+);
 
 export default ForgotPassword;
 

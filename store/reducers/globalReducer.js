@@ -1,14 +1,6 @@
-import {
-  GET_GLOBAL_COUNTRIES_INFO,
-  GET_USER_LOCATION_INFO,
-  GET_USER_LOCATION_INFO_FAIL,
-} from "../actionTypes";
+import { GET_GLOBAL_COUNTRIES_INFO, GET_USER_LOCATION_INFO, GET_USER_LOCATION_INFO_FAIL } from "../actionTypes";
 
-import {
-  getGlobalCountriesInfo,
-  getUserLocationInfo,
-  getUserLocationInfoFail,
-} from "../actions/globalActions";
+import { getGlobalCountriesInfo, getUserLocationInfo, getUserLocationInfoFail } from "../actions/globalActions";
 
 export const initialState = { userLocation: {}, error: "", countries: [] };
 

@@ -17,15 +17,19 @@ class ReferTable extends Component {
   }
 
   render() {
-    const state = this.state;
+    const { state } = this;
     return (
       <View style={styles.container}>
         <Table borderStyle={{ borderWidth: 1 }}>
+<<<<<<< HEAD
           <Row
             data={state.tableHead}
             style={styles.head}
             textStyle={styles.Headtext}
           />
+=======
+          <Row data={state.tableHead} style={styles.head} textStyle={styles.text} />
+>>>>>>> cacd7a7ef60ac20bdfe25c9e29ce6d4eb344d982
           <Rows data={state.tableData} textStyle={styles.text} />
         </Table>
       </View>
