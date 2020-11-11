@@ -21,7 +21,7 @@ class ReferTable extends Component {
     return (
       <View style={styles.container}>
         <Table borderStyle={{ borderWidth: 1 }}>
-          <Row data={state.tableHead} style={styles.head} textStyle={styles.text} />
+          <Row data={state.tableHead} style={styles.head} textStyle={{ fontWeight: "bold", padding: 4 }} />
           <Rows data={state.tableData} textStyle={styles.text} />
         </Table>
       </View>
@@ -31,16 +31,5 @@ class ReferTable extends Component {
 export default ReferTable;
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 10, paddingTop: 10 },
-  head: {
-    height: 40,
-  },
-  Headtext: {
-    margin: 6,
-    fontSize: 15,
-    fontWeight: "bold",
-  },
-  text: {
-    margin: 6,
-  },
+  text: { marginLeft: 4 },
 });

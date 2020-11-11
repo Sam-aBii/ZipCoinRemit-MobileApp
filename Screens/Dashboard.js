@@ -3,9 +3,9 @@ import { StyleSheet } from "react-native";
 import { Container, Content, Card, CardItem, Body, Text, Thumbnail } from "native-base";
 import { View } from "react-native-animatable";
 
-import Typograpghy from "../Theme";
+import theme from "../Theme";
 
-const { COLORS } = Typograpghy;
+const { COLORS } = theme;
 
 const DashboardScreen = () => (
   <Container>
