@@ -1,5 +1,4 @@
 import React from "react";
-
 import { View, StyleSheet, Text, TextInput, Platform } from "react-native";
 
 import Typograpghy from "../../Theme";

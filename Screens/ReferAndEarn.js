@@ -12,15 +12,11 @@ const height = width * 0.6;
 const { COLORS } = Typograpghy;
 
 const images = [
-  require("../assets/Refer-Earn/Refer1.jpeg"),
-  require("../assets/Refer-Earn/Refer2.jpeg"),
-  require("../assets/Refer-Earn/Refer3.jpeg"),
-  require("../assets/Refer-Earn/Refer4.jpeg"),
-  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer1.dd1c4939.png",
-  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer4.96c57111.png",
-  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer5.1f2a279d.png",
-  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer6.3b31fc84.jpg",
-  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer7.df6bb8d7.jpg",
+  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer1.dd1c4939.png",
+  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer4.96c57111.png",
+  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer5.1f2a279d.png",
+  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer6.3b31fc84.jpg",
+  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer7.df6bb8d7.jpg",
 ];
 
 const ReferAndEarnScreen = ({ navigation }) => (
