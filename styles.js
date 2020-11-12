@@ -21,6 +21,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   btnSecondaryText: { fontSize: 16, color: COLORS.DEFAULT, textTransform: "uppercase" },
+  textDanger: { color: COLORS.DANGER },
 });
 
 export default styles;

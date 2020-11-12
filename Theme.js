@@ -22,5 +22,6 @@ export default {
     WHITE: "#FFFFFF",
     BLACK: "#000000",
     CardBACKGROUND: "#ebedef",
+    DANGER: "#D95345",
   },
 };

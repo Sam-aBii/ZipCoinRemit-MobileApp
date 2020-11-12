@@ -1,26 +1,3 @@
-<<<<<<< HEAD
-import React, { useState } from "react";
-import { Button, Icon, CardItem, Card, Segment } from "native-base";
-import ReferTable from "../utils/ReferTable";
-import copy from "copy-to-clipboard";
-
-import {
-  View,
-  StyleSheet,
-  Text,
-  StatusBar,
-  Image,
-  ScrollView,
-  Dimensions,
-} from "react-native";
-
-const { width } = Dimensions.get("window");
-const height = width * 0.6;
-
-import Typograpghy from "../Theme";
-import { TextInput } from "react-native-paper";
-import { TouchableOpacity } from "react-native-gesture-handler";
-=======
 import React from "react";
 import { Button, Icon, CardItem, Card } from "native-base";
 import { View, StyleSheet, Text, StatusBar, Image, ScrollView, Dimensions } from "react-native";
@@ -32,92 +9,20 @@ import Typograpghy from "../Theme";
 
 const { width } = Dimensions.get("window");
 const height = width * 0.6;
->>>>>>> cacd7a7ef60ac20bdfe25c9e29ce6d4eb344d982
 const { COLORS } = Typograpghy;
 
 const images = [
-  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer1.dd1c4939.png",
-  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer4.96c57111.png",
-  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer5.1f2a279d.png",
-  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer6.3b31fc84.jpg",
-  "https://stormy-hamlet-40315.herokuapp.com/static/media/refer7.df6bb8d7.jpg",
+  require("../assets/Refer-Earn/Refer1.jpeg"),
+  require("../assets/Refer-Earn/Refer2.jpeg"),
+  require("../assets/Refer-Earn/Refer3.jpeg"),
+  require("../assets/Refer-Earn/Refer4.jpeg"),
+  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer1.dd1c4939.png",
+  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer4.96c57111.png",
+  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer5.1f2a279d.png",
+  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer6.3b31fc84.jpg",
+  // "https://stormy-hamlet-40315.herokuapp.com/static/media/refer7.df6bb8d7.jpg",
 ];
-<<<<<<< HEAD
-const ReferAndEarnScreen = ({ navigation }) => {
-  const [code, setCode] = useState("DQCRGH");
-  return (
-    <ScrollView>
-      <View style={styles.Header}>
-        <StatusBar
-          backgroundColor={COLORS.SECONDARY}
-          barStyle="light-content"
-        />
-        <Button transparent>
-          <Icon
-            name="menu"
-            onPress={() => navigation.openDrawer()}
-            style={styles.DrawerIcon}
-          />
-          <Text style={styles.HeaderText}>Refer & Earn</Text>
-        </Button>
-      </View>
-      <View style={styles.CourselHead}>
-        <ScrollView
-          showsHorizontalScrollIndicator={false}
-          pagingEnabled
-          horizontal
-          style={{ width, height }}
-        >
-          {images.map((image, index) => (
-            <Image
-              key={index}
-              source={{ uri: image }}
-              style={styles.CourselImage}
-            />
-          ))}
-        </ScrollView>
-        <View style={styles.Pagination}>
-          {images.map((i, k) => (
-            <Text key={k} style={styles.PaginationDot}>
-              ⬤
-            </Text>
-          ))}
-        </View>
-      </View>
-      <Card>
-        <Text style={styles.ReferalHeading}>Referral Highlights</Text>
-        <CardItem>
-          <TextInput
-            placeholder="FT9142"
-            value={code}
-            disabled
-            style={styles.TextInput}
-            onChange={(e) => setCode(e.target.value)}
-          />
-          <TouchableOpacity>
-            <Button
-              onClick={() => {
-                copy(code);
-              }}
-              bordered
-              warning
-              style={styles.ButtonCopy}
-            >
-              <Text>COPY</Text>
-            </Button>
-          </TouchableOpacity>
-        </CardItem>
-        <Text style={styles.ReferalText}>
-          Every 5th successful referral, your next money transfer is absolutely
-          FREE ZIPCASH. So refer as many friends and earn unlimited FREE
-          transactions.
-        </Text>
-      </Card>
-      <View>
-        <Button block rounded style={styles.ShareButton}>
-          <Icon name="share" style={{ color: COLORS.WHITE }} />
-          <Text style={styles.ButtonText}>SHARE</Text>
-=======
+
 const ReferAndEarnScreen = ({ navigation }) => (
   <SafeAreaView style={{ flex: 1 }}>
     <View style={styles.Header}>
@@ -147,7 +52,6 @@ const ReferAndEarnScreen = ({ navigation }) => (
         <TextInput placeholder="DQCRGH" disabled style={styles.TextInput} />
         <Button bordered warning style={styles.ButtonCopy}>
           <Text>COPY</Text>
->>>>>>> cacd7a7ef60ac20bdfe25c9e29ce6d4eb344d982
         </Button>
       </CardItem>
       <Text style={styles.ReferalText}>
