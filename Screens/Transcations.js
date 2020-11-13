@@ -1,7 +1,10 @@
 import React from "react";
-import { Button, Icon, Item, Input } from "native-base";
+import { Item, Input, Button } from "native-base";
+import { Table, Row, Rows } from "react-native-table-component";
 
-import { View, StyleSheet, Text, StatusBar } from "react-native";
+import { View, StyleSheet, Text, ScrollView } from "react-native";
+import CustomHeader from "../components/shared/Header";
+import globalStyles from "../styles";
 
 import Typograpghy from "../Theme";
 
@@ -9,13 +12,7 @@ const { COLORS } = Typograpghy;
 
 const TranscationsScreen = ({ navigation }) => (
   <View>
-    <View style={styles.Header}>
-      <StatusBar backgroundColor={COLORS.SECONDARY} barStyle="light-content" />
-      <Button transparent>
-        <Icon name="menu" onPress={() => navigation.openDrawer()} style={styles.DrawerIcon} />
-        <Text style={styles.HeaderText}>Transcations</Text>
-      </Button>
-    </View>
+    <CustomHeader screenTitle="Transcations" onPress={() => navigation.openDrawer()} />
     <View style={styles.TranscationHeader}>
       <Text style={styles.TranscationHeaderText}>All Transcations </Text>
     </View>
@@ -24,6 +21,22 @@ const TranscationsScreen = ({ navigation }) => (
       <Input placeholder="Currency" style={styles.Input} />
       <Input placeholder="Type" />
     </Item>
+    <Button style={{ ...globalStyles.btnPrimary, marginLeft: "auto", margin: 8 }}>
+      <Text style={globalStyles.btnPrimaryText}>clear filter</Text>
+    </Button>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+      <Table borderStyle={{ borderWidth: 1 }} style={{ margin: 4 }}>
+        <Row
+          data={["Date", "TRANSID", "Amount", "Payment Method", "Transaction Type", "	Status", "	Payment Action"]}
+          textStyle={{ fontWeight: "bold", padding: 10 }}
+        />
+        <Rows data={[]} textStyle={{ marginLeft: 4 }} />
+        <Row data={["No data available"]} textStyle={{ padding: 10 }} />
+        <Row data={["No data available"]} textStyle={{ padding: 10 }} />
+        <Row data={["No data available"]} textStyle={{ padding: 10 }} />
+        <Row data={["No data available"]} textStyle={{ padding: 10 }} />
+      </Table>
+    </ScrollView>
   </View>
 );
 

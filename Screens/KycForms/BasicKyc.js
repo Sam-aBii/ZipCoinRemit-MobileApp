@@ -1,6 +1,9 @@
 import React from "react";
 import { View, StyleSheet, Text, TextInput, Platform } from "react-native";
 
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import Typograpghy from "../../Theme";
 import CustomHeader from "../../components/shared/Header";
 
@@ -21,8 +24,8 @@ const BasicKyc = ({ navigation }) => (
       <View style={styles.action}>
         <TextInput style={styles.textInput} placeholder="Enter Email Address" autoCapitalize="none" />
       </View>
-      <View>
-        <TextInput />
+      <View style={styles.action}>
+        <DatePicker />
       </View>
     </View>
   </View>
