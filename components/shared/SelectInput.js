@@ -23,7 +23,7 @@ const CustomPicker = ({ items, iosHeader, control, name, errors, requiredMessage
             iosHeader={iosHeader}
             iosIcon={<Icon name="arrow-down" />}
             selectedValue={selectedValue}
-            style={{ marginTop: -6, marginLeft: -8, marginBottom: -10 }}
+            style={{ marginTop: -3, marginLeft: -8, marginBottom: -10 }}
             onValueChange={onChange}
           >
             <Picker.Item label={label} value="" />

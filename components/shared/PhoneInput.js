@@ -32,7 +32,7 @@ const CustomPhoneInput = ({ name, label, control, setValue, errors, requiredMess
             }}
             onChangePhoneNumber={(number) => setValue(name, number)}
             pickerBackgroundColor={COLORS.SECONDARY}
-            textProps={{ placeholder: "Mobile number" }}
+            textProps={{ placeholder: label }}
           />
           {errorRenderer(errors, name)}
         </>
@@ -52,7 +52,7 @@ CustomPhoneInput.propTypes = {
 };
 
 CustomPhoneInput.defaultProps = {
-  requiredMessage: "",
+  requiredMessage: false,
 };
 
 export default CustomPhoneInput;

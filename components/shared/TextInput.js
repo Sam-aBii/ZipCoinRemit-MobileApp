@@ -5,7 +5,7 @@ import { Controller } from "react-hook-form";
 
 import { errorRenderer } from "../../utils/yupFormSchemas";
 
-const TextInput = ({ name, label, control, setValue, errors, requiredMessage }) => {
+const CustomTextInput = ({ name, label, control, setValue, errors, requiredMessage }) => {
   return (
     <Controller
       name={name}
@@ -14,7 +14,7 @@ const TextInput = ({ name, label, control, setValue, errors, requiredMessage }) 
       render={({ onBlur, value, name: inputName, ref }) => {
         return (
           <>
-            <Item floatingLabel style={{ marginTop: 0, marginLeft: 0 }}>
+            <Item floatingLabel style={{ marginTop: 3, marginLeft: 0 }}>
               <Label>{label}</Label>
               <Input onChangeText={(v) => setValue(inputName, v)} value={value} name={inputName} ref={ref} onBlur={onBlur} />
             </Item>
@@ -26,7 +26,7 @@ const TextInput = ({ name, label, control, setValue, errors, requiredMessage }) 
   );
 };
 
-TextInput.propTypes = {
+CustomTextInput.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   requiredMessage: PropTypes.string,
@@ -36,8 +36,8 @@ TextInput.propTypes = {
   errors: PropTypes.object.isRequired,
 };
 
-TextInput.defaultProps = {
+CustomTextInput.defaultProps = {
   requiredMessage: "",
 };
 
-export default TextInput;
+export default CustomTextInput;

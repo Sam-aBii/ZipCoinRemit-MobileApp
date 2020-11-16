@@ -6,13 +6,15 @@ import Axios from "axios";
 import { Alert } from "react-native";
 
 import CustomHeader from "../../components/shared/Header";
-import TextInput from "../../components/shared/TextInput";
+import CustomTextInput from "../../components/shared/TextInput";
 import useYupValidationResolver from "../../utils/useYupValidationResolver";
 import CustomPicker from "../../components/shared/SelectInput";
 import { GlobalContext } from "../../store/contexts/globalContext";
 import { beneficiarySchema } from "../../utils/yupFormSchemas";
 import config from "../../config";
 import CustomPhoneInput from "../../components/shared/PhoneInput";
+import PaymentReceivingMethods from "../../components/shared/PaymentReceivingMethodsTabs";
+import globalStyles from "../../styles";
 
 const { SERVER_BASE_URL } = config;
 
@@ -38,6 +40,15 @@ const AddABeneficiary = ({ navigation }) => {
       state: null,
       city: null,
       mobile: null,
+      bank: "",
+      branchName: "",
+      bankAccountNumber: "",
+      agent: null,
+      agentEmail: null,
+      agentLocation: null,
+      agentMobile: null,
+      walletType: null,
+      walletNumber: null,
     },
     reValidateMode: "onChange",
     resolver: useYupValidationResolver(validationSchema),
@@ -90,7 +101,7 @@ const AddABeneficiary = ({ navigation }) => {
       />
       <Content style={{ padding: 4 }}>
         <Form>
-          <TextInput
+          <CustomTextInput
             name="fullname"
             control={control}
             label="Full name of beneficiary"
@@ -98,7 +109,7 @@ const AddABeneficiary = ({ navigation }) => {
             setValue={setValue}
             requiredMessage="Fullname is required"
           />
-          <TextInput
+          <CustomTextInput
             name="email"
             control={control}
             label="Email address of beneficiary"
@@ -111,7 +122,7 @@ const AddABeneficiary = ({ navigation }) => {
             requiredMessage="Please select a country"
             control={control}
             name="country"
-            items={globalCountries}
+            items={globalCountries.filter((c) => c.isAcceptable)}
             iosHeader="Please select a country"
             label={globalCountries ? "Please select a country" : "Loading..."}
             selectedValue={selectedCountry}
@@ -163,7 +174,7 @@ const AddABeneficiary = ({ navigation }) => {
               setValue("city", cityId);
             }}
           />
-          <TextInput
+          <CustomTextInput
             name="address"
             control={control}
             label="Beneficiary address"
@@ -171,7 +182,7 @@ const AddABeneficiary = ({ navigation }) => {
             setValue={setValue}
             requiredMessage="Address is required"
           />
-          <TextInput
+          <CustomTextInput
             name="zip"
             control={control}
             label="Zip/Postal code"
@@ -187,7 +198,19 @@ const AddABeneficiary = ({ navigation }) => {
             setValue={setValue}
             requiredMessage="Mobile number is required"
           />
-          <Button primary rounded block onPress={handleSubmit(onSubmit)}>
+          <PaymentReceivingMethods
+            control={control}
+            errors={errors}
+            setValue={setValue}
+            selectedCountry={globalCountries.find((c) => c.id === selectedCountry)}
+          />
+          <Button
+            primary
+            rounded
+            block
+            onPress={handleSubmit(onSubmit)}
+            style={{ ...globalStyles.btnSecondary, marginBottom: 12, marginTop: 8 }}
+          >
             <Text>ADD</Text>
           </Button>
         </Form>
