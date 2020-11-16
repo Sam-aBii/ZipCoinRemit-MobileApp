@@ -1,34 +1,37 @@
 import React from "react";
-import { Button, Icon } from "native-base";
+import { Item, Input, Icon } from "native-base";
+import { Table, Row, Rows } from "react-native-table-component";
 
-import { View, StyleSheet, Text, StatusBar } from "react-native";
+import { View, ScrollView } from "react-native";
+import CustomHeader from "../components/shared/Header";
 
 import Typograpghy from "../Theme";
 
 const { COLORS } = Typograpghy;
 
 const CustomerScreen = ({ navigation }) => (
-  <View style={styles.Header}>
-    <StatusBar backgroundColor={COLORS.SECONDARY} barStyle="light-content" />
-    <Button transparent>
-      <Icon name="menu" onPress={() => navigation.openDrawer()} style={styles.DrawerIcon} />
-      <Text style={styles.HeaderText}>Customer</Text>
-    </Button>
+  <View>
+    <CustomHeader screenTitle="Customer" onPress={() => navigation.openDrawer()} />
+    <Item>
+      <Icon name="ios-search" style={{ color: COLORS.SECONDARY }} />
+      <Input placeholder="Search" />
+      <Icon name="ios-people" style={{ color: COLORS.SECONDARY }} />
+    </Item>
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ margin: 4, paddingTop: 20 }}>
+      <Table borderStyle={{ borderWidth: 1 }}>
+        <Row
+          data={["Index", "Name", "Email", "Country", "Rem No", "	OS/Browser", "Phone", "IP Address", "Status", "Actions"]}
+          textStyle={{ fontWeight: "bold", padding: 10 }}
+        />
+        <Rows data={[]} textStyle={{ marginLeft: 4 }} />
+        <Row data={["No data available"]} textStyle={{ padding: 10 }} />
+        <Row data={["No data available"]} textStyle={{ padding: 10 }} />
+        <Row data={["No data available"]} textStyle={{ padding: 10 }} />
+        <Row data={["No data available"]} textStyle={{ padding: 10 }} />
+        <Row data={["No data available"]} textStyle={{ padding: 10 }} />
+      </Table>
+    </ScrollView>
   </View>
 );
 
 export default CustomerScreen;
-
-const styles = StyleSheet.create({
-  Header: {
-    backgroundColor: COLORS.SECONDARY,
-  },
-  DrawerIcon: {
-    fontSize: 30,
-    color: COLORS.WHITE,
-  },
-  HeaderText: {
-    fontSize: 21,
-    color: COLORS.WHITE,
-  },
-});
