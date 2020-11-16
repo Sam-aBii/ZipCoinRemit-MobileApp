@@ -23,5 +23,7 @@ export default {
     BLACK: "#000000",
     CardBACKGROUND: "#ebedef",
     DANGER: "#D95345",
+    inputLabelColor: "#919191",
+    inputBorderColor: "#d9d5dc",
   },
 };

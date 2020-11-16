@@ -7,10 +7,10 @@ import globalStyles from "../styles";
 const commonFields = {
   fullname: yup.string().max(20).required("Name is required(Max length: 20)").nullable(true),
   email: yup.string().email().required("A valid email is required").nullable(true),
-  country: yup.string().required("Please select a country"),
-  city: yup.string().max(64).required("Please select a city"),
-  address: yup.string().required("Please enter address"),
-  zip: yup.string().max(20).required("Please enter a zip code"),
+  country: yup.string().required("Please select a country").nullable(true),
+  city: yup.string().max(64).required("Please select a city").nullable(true),
+  address: yup.string().required("Please enter address").nullable(true),
+  zip: yup.string().max(20).required("Please enter a zip code").nullable(true),
 };
 
 export const basicFormSchema = yup.object().shape({
@@ -37,17 +37,18 @@ export const standardFormSchema = yup.object().shape({
 
 export const beneficiarySchema = yup.object().shape({
   ...commonFields,
-  state: yup.string().max(64).required("Please select a state"),
-  bank: yup.string().max(64).required("Please select a bank"),
-  branchName: yup.string().max(64).required("Branch name is required"),
-  bankAccountNumber: yup.string().max(64).required("Bank acccount number is required"),
-  mobileOperator: yup.string().max(64).required("Please select a mobile operator"),
-  agent: yup.string().max(32).required("Please select an agent"),
-  agentLocation: yup.string().max(64).required("Please select agent location"),
-  agentEmail: yup.string().email("Email address is invalid").required("Agent email is required"),
-  walletType: yup.string().max(16).required("Please select a wallet"),
-  walletNumber: yup.string().max(64).required("Wallet number is required"),
-  isInfoValid: yup.boolean().required("Please check this box to continue"),
+  state: yup.string().max(64).required("Please select a state").nullable(),
+  mobile: yup.string().max(64).required("Mobile number is required").nullable(),
+  // bank: yup.string().max(64).required("Please select a bank"),
+  // branchName: yup.string().max(64).required("Branch name is required"),
+  // bankAccountNumber: yup.string().max(64).required("Bank acccount number is required"),
+  // mobileOperator: yup.string().max(64).required("Please select a mobile operator"),
+  // agent: yup.string().max(32).required("Please select an agent"),
+  // agentLocation: yup.string().max(64).required("Please select agent location"),
+  // agentEmail: yup.string().email("Email address is invalid").required("Agent email is required"),
+  // walletType: yup.string().max(16).required("Please select a wallet"),
+  // walletNumber: yup.string().max(64).required("Wallet number is required"),
+  // isInfoValid: yup.boolean().required("Please check this box to continue"),
 });
 
 export const updateCountryInfoSchema = yup.object().shape(
@@ -71,4 +72,4 @@ export const updateCurrencyInfoSchema = yup.object().shape({
 });
 
 export const errorRenderer = (errors, name) =>
-  errors[name] && <Text style={{ marginLeft: 14, ...globalStyles.textDanger }}>{errors[name].message}</Text>;
+  errors[name] && <Text style={globalStyles.textDanger}>{errors[name].message}</Text>;
