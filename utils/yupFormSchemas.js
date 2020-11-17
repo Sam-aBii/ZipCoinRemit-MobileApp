@@ -39,17 +39,29 @@ export const beneficiarySchema = yup.object().shape({
   ...commonFields,
   state: yup.string().max(64).required("Please select a state").nullable(),
   mobile: yup.string().max(64).required("Mobile number is required").nullable(),
+  // isInfoValid: yup.boolean().required("Please check this box to continue"),
+});
+
+export const bankSchema = yup.object().shape({
   bank: yup.string().max(64).required("Please select a bank").nullable(),
   branchName: yup.string().max(64).required("Branch name is required").nullable(),
   bankAccountNumber: yup.string().max(64).required("Bank account number is required").nullable(),
+});
+
+export const mobileSchema = yup.object().shape({
   mobileOperator: yup.string().max(64).required("Please select a mobile operator").nullable(),
+});
+
+export const agentSchema = yup.object().shape({
   agent: yup.string().max(32).required("Please select an agent").nullable(),
   agentLocation: yup.string().max(64).required("Please select agent location").nullable(),
   agentEmail: yup.string().email("Email address is invalid").required("Agent email is required").nullable(),
   agentMobile: yup.string().max(64).required("Mobile number is required").nullable(),
+});
+
+export const walletSchema = yup.object().shape({
   walletType: yup.string().max(16).required("Please select a wallet").nullable(),
   walletNumber: yup.string().max(64).required("Wallet number is required").nullable(),
-  // isInfoValid: yup.boolean().required("Please check this box to continue"),
 });
 
 export const updateCountryInfoSchema = yup.object().shape(

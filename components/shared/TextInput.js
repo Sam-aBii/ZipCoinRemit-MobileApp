@@ -14,7 +14,7 @@ const CustomTextInput = ({ name, label, control, setValue, errors, requiredMessa
       render={({ onBlur, value, name: inputName, ref }) => {
         return (
           <>
-            <Item floatingLabel style={{ marginTop: 3, marginLeft: 0 }}>
+            <Item floatingLabel style={{ marginLeft: 0, marginTop: 4 }}>
               <Label>{label}</Label>
               <Input onChangeText={(v) => setValue(inputName, v)} value={value} name={inputName} ref={ref} onBlur={onBlur} />
             </Item>
