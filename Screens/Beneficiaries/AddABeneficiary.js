@@ -4,13 +4,14 @@ import { Button, Container, Content, Form, Text } from "native-base";
 import { useForm } from "react-hook-form";
 import Axios from "axios";
 import { Alert } from "react-native";
+import { isEmpty } from "lodash";
 
 import CustomHeader from "../../components/shared/Header";
 import CustomTextInput from "../../components/shared/TextInput";
 import useYupValidationResolver from "../../utils/useYupValidationResolver";
 import CustomPicker from "../../components/shared/SelectInput";
 import { GlobalContext } from "../../store/contexts/globalContext";
-import { beneficiarySchema } from "../../utils/yupFormSchemas";
+import { beneficiarySchema, bankSchema, mobileSchema, agentSchema, walletSchema } from "../../utils/yupFormSchemas";
 import config from "../../config";
 import CustomPhoneInput from "../../components/shared/PhoneInput";
 import PaymentReceivingMethods from "../../components/shared/PaymentReceivingMethodsTabs";
@@ -28,6 +29,35 @@ const AddABeneficiary = ({ navigation }) => {
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedState, setSelectedState] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
+
+  useEffect(() => {
+    const country = globalCountries.find((c) => c.id === selectedCountry);
+
+    if (!isEmpty(country)) {
+      country.receivingMethods.forEach((method) => {
+        switch (method) {
+          case "bank":
+            beneficiarySchema.concat(bankSchema);
+            break;
+          case "agent":
+            beneficiarySchema.concat(agentSchema);
+            break;
+          case "zipCash":
+            beneficiarySchema.concat(mobileSchema);
+            break;
+          case "zipWallet":
+            beneficiarySchema.concat(walletSchema);
+            break;
+          case "mobile":
+            beneficiarySchema.concat(mobileSchema);
+            break;
+          default:
+            break;
+        }
+      });
+    }
+  }, [selectedCountry, globalCountries]);
+
   const validationSchema = useMemo(() => beneficiarySchema, []);
 
   const { handleSubmit, control, errors, setValue } = useForm({
@@ -40,9 +70,9 @@ const AddABeneficiary = ({ navigation }) => {
       state: null,
       city: null,
       mobile: null,
-      bank: "",
-      branchName: "",
-      bankAccountNumber: "",
+      bank: null,
+      branchName: null,
+      bankAccountNumber: null,
       agent: null,
       agentEmail: null,
       agentLocation: null,
@@ -99,7 +129,7 @@ const AddABeneficiary = ({ navigation }) => {
         onPress={() => navigation.goBack()}
         screenTitle="Add a beneficiary"
       />
-      <Content style={{ padding: 4 }}>
+      <Content style={{ paddingHorizontal: 8 }}>
         <Form>
           <CustomTextInput
             name="fullname"

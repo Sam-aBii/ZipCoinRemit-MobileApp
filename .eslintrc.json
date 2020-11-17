@@ -10,7 +10,8 @@
     "airbnb-base",
     "plugin:jest/recommended",
     "plugin:security/recommended",
-    "plugin:prettier/recommended"
+    "plugin:prettier/recommended",
+    "plugin:react-hooks/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": {
@@ -19,7 +20,7 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": ["react", "jest", "security", "prettier"],
+  "plugins": ["react", "jest", "security", "prettier", "react-hooks", "react-app"],
   "rules": {
     "no-console": "error",
     "func-names": "off",
@@ -31,6 +32,8 @@
     "react/prop-types": [0],
     "no-use-before-define": "off",
     "global-require": "off",
-    "react/no-array-index-key": "off"
+    "react/no-array-index-key": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
   }
 }
