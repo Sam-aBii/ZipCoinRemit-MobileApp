@@ -5,6 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import { View } from "react-native";
 import * as Font from "expo-font";
 import axios from "axios";
+import { ActivityIndicator } from "react-native-paper";
 
 import MainTabScreen from "./Navigators/MainTabScreen";
 import DrawerContent from "./Navigators/DrawerContent";
@@ -20,10 +21,12 @@ import config from "./config";
 import { GET_GLOBAL_COUNTRIES_INFO } from "./store/actionTypes";
 
 const Drawer = createDrawerNavigator();
-const { useReducer, useEffect } = React;
+const { useReducer, useEffect, useState } = React;
 const { SERVER_BASE_URL } = config;
 
 function App() {
+  const [loadingAssets, setLoadingAssets] = useState(true);
+
   const [globalState, globalDispatch] = useReducer(globalReducer, globalInitialState);
 
   useEffect(() => {
@@ -32,6 +35,7 @@ function App() {
         Roboto: require("./assets/fonts/Roboto/Roboto-Regular.ttf"),
         Roboto_medium: require("./assets/fonts/Roboto/Roboto-Medium.ttf"),
       });
+      setLoadingAssets(false);
     };
     loadFonts();
   }, []);
@@ -46,6 +50,13 @@ function App() {
     };
     fetchData();
   }, []);
+
+  if (loadingAssets)
+    return (
+      <View style={{ width: "100%", height: "100%", alignItems: "center", justifyContent: "center" }}>
+        <ActivityIndicator color="#dba84e" size="large" />
+      </View>
+    );
 
   return (
     <NavigationContainer>

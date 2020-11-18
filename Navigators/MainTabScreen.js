@@ -80,6 +80,7 @@ const HomeStackScreen = ({ navigation }) => (
         backgroundColor: COLORS.SECONDARY,
       },
       headerTintColor: COLORS.WHITE,
+      headerShown: false,
     }}
   >
     <HomeStack.Screen
@@ -102,6 +103,7 @@ const SettingStackScreen = ({ navigation }) => (
         backgroundColor: COLORS.SECONDARY,
       },
       headerTintColor: COLORS.WHITE,
+      headerShown: false,
     }}
   >
     <SettingStack.Screen
@@ -123,6 +125,7 @@ const SendMoneyStackScreen = ({ navigation }) => (
         backgroundColor: COLORS.SECONDARY,
       },
       headerTintColor: COLORS.WHITE,
+      headerShown: false,
     }}
   >
     <SendMoneyStack.Screen
@@ -144,6 +147,7 @@ const AirTimeTopStackScreen = ({ navigation }) => (
         backgroundColor: COLORS.SECONDARY,
       },
       headerTintColor: COLORS.WHITE,
+      headerShown: false,
     }}
   >
     <SendFoodStack.Screen
@@ -165,6 +169,7 @@ const SendFoodStackScreen = ({ navigation }) => (
         backgroundColor: COLORS.SECONDARY,
       },
       headerTintColor: COLORS.WHITE,
+      headerShown: false,
     }}
   >
     <SendFoodStack.Screen

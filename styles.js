@@ -24,6 +24,16 @@ const styles = StyleSheet.create({
   header: {
     backgroundColor: COLORS.SECONDARY,
   },
+  headerScreenTitle: {
+    marginLeft: 4,
+    fontSize: 22,
+  },
+  headerLeft: {
+    flex: 0,
+  },
+  headerBody: {
+    flex: 1,
+  },
   btnPrimaryOutlined: {
     backgroundColor: COLORS.WHITE,
     borderRadius: 50,

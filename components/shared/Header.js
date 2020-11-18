@@ -12,13 +12,13 @@ const CustomHeader = ({ onPress, screenTitle, iconName, onCancel, showCancelBtn 
   return (
     <Header style={globalStyles.header}>
       <StatusBar backgroundColor={COLORS.SECONDARY} barStyle="light-content" />
-      <Left style={{ flex: 0 }}>
+      <Left style={globalStyles.headerLeft}>
         <Button transparent>
           <Icon name={iconName} onPress={onPress} />
         </Button>
       </Left>
-      <Body style={{ flex: 1 }}>
-        <Title style={{ marginLeft: 4 }}>{screenTitle}</Title>
+      <Body style={globalStyles.headerBody}>
+        <Title style={globalStyles.headerScreenTitle}>{screenTitle}</Title>
       </Body>
       {showCancelBtn && (
         <Right>

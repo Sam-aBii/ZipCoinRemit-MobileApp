@@ -4,11 +4,13 @@ import { Container, Content, Card, CardItem, Body, Text, Thumbnail } from "nativ
 import { View } from "react-native-animatable";
 
 import theme from "../Theme";
+import CustomHeader from "../components/shared/Header";
 
 const { COLORS } = theme;
 
-const DashboardScreen = () => (
+const DashboardScreen = ({ navigation }) => (
   <Container>
+    <CustomHeader screenTitle="Dashboard" onPress={navigation.openDrawer} />
     <Content style={styles.Content}>
       <View style={styles.header}>
         <Text style={styles.headerText}>AVAILABLE BALANCES</Text>
