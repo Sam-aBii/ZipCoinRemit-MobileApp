@@ -84,5 +84,13 @@ export const updateCurrencyInfoSchema = yup.object().shape({
   fxMargin: yup.string().required(),
 });
 
+export const sendMoneySchema = yup.object().shape({
+  youSend: yup.number().min(1, "Sending amount cannot be less then 1").required("Please enter seding amount").nullable(),
+  sendingCurrency: yup.string().required("Please select a sending currency").nullable(),
+  includeFee: yup.bool().notRequired(),
+  benefGets: yup.number().required("Receiving amount is required").nullable(),
+  receivingCurrency: yup.string().required("Please select a receiving currency").nullable(),
+});
+
 export const errorRenderer = (errors, name) =>
   errors[name] && <Text style={globalStyles.textDanger}>{errors[name].message}</Text>;

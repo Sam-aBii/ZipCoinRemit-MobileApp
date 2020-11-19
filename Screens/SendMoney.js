@@ -1,23 +1,32 @@
-import React from "react";
+import React, { useMemo } from "react";
 import AnimatedMultistep from "react-native-animated-multistep";
+import { useForm } from "react-hook-form";
 import { View } from "native-base";
 
 import CustomHeader from "../components/shared/Header";
-
-/* Define the steps  */
-
+import useYupValidationResolver from "../utils/useYupValidationResolver";
+import { sendMoneySchema } from "../utils/yupFormSchemas";
 import sendMoneyForms from "./sendMoneyForms";
 
-const allSteps = [
-  { name: "step 1", component: sendMoneyForms.SendForm },
-  { name: "step 2", component: sendMoneyForms.ReceiveForm },
-  { name: "step 3", component: sendMoneyForms.ReasonForm },
-  { name: "step 4", component: sendMoneyForms.ReviewForm },
-  { name: "step 5", component: sendMoneyForms.CheckoutForm },
-];
+const { SendForm, ReceiveForm, ReasonForm, ReviewForm, CheckoutForm } = sendMoneyForms;
 
 /* Define your class */
 const SendMoney = ({ navigation }) => {
+  const validationSchema = useMemo(() => sendMoneySchema, []);
+
+  const useFormParams = useForm({
+    reValidateMode: "onChange",
+    resolver: useYupValidationResolver(validationSchema),
+  });
+
+  const allSteps = [
+    { name: "send", component: (props) => <SendForm useFormParams={useFormParams} {...props} /> },
+    { name: "receive", component: (props) => <ReceiveForm useFormParams={useFormParams} {...props} /> },
+    { name: "reason", component: (props) => <ReasonForm useFormParams={useFormParams} {...props} /> },
+    { name: "review", component: (props) => <ReviewForm useFormParams={useFormParams} {...props} /> },
+    { name: "checkout", component: (props) => <CheckoutForm useFormParams={useFormParams} {...props} /> },
+  ];
+
   /* define the method to be called when you go on next step */
 
   const onNext = () => {

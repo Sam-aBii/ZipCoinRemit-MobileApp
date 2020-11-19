@@ -1,8 +1,9 @@
+import { View } from "react-native";
 import { Text } from "native-base";
 import React from "react";
-import { View } from "react-native";
 
 import NavigationButtons from "./NavigationButtons";
+// import CustomTextInput from "../../components/shared/TextInput";
 
 const SendForm = (props) => {
   const { next, saveState } = props;
@@ -16,6 +17,7 @@ const SendForm = (props) => {
 
   return (
     <View>
+      {/* <CustomTextInput /> */}
       <Text>Send Form</Text>
       <NavigationButtons renderBack={false} onPressNext={nextStep} />
     </View>
