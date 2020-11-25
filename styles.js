@@ -43,6 +43,25 @@ const styles = StyleSheet.create({
   },
   btnSecondaryText: { fontSize: 16, color: COLORS.DEFAULT, textTransform: "uppercase" },
   textDanger: { color: COLORS.DANGER },
+  sendMoneyFormTitle: {
+    fontSize: 24,
+    borderBottomWidth: 1,
+    textAlign: "center",
+    paddingBottom: 4,
+    color: COLORS.DEFAULT,
+    borderColor: COLORS.DEFAULT,
+    marginBottom: 4,
+  },
+  shadow1: {
+    shadowColor: COLORS.BLACK,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.23,
+    shadowRadius: 2.62,
+    elevation: 4,
+  },
 });
 
 export default styles;

@@ -40,7 +40,7 @@ const CustomPicker = ({ items, iosHeader, control, name, errors, requiredMessage
 
 CustomPicker.propTypes = {
   errors: PropTypes.object.isRequired,
-  requiredMessage: PropTypes.string.isRequired,
+  requiredMessage: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   // eslint-disable-next-line react/forbid-prop-types
   control: PropTypes.any.isRequired,
   name: PropTypes.string.isRequired,
@@ -50,6 +50,10 @@ CustomPicker.propTypes = {
   label: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
   selectedValue: PropTypes.string.isRequired,
+};
+
+CustomPicker.defaultProps = {
+  requiredMessage: false,
 };
 
 export default CustomPicker;
