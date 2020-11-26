@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useCallback } from "react";
 import { View, Text, Content, Icon } from "native-base";
-import { Alert, Dimensions, StyleSheet } from "react-native";
+import { Alert, StyleSheet } from "react-native";
 import { useFormContext } from "react-hook-form";
 import Axios from "axios";
 
@@ -10,7 +10,7 @@ import CustomSelectInput from "../../components/shared/SelectInput";
 import CustomCheckbox from "../../components/shared/CustomCheckbox";
 import { GlobalContext } from "../../store/contexts/globalContext";
 import { SendMoneyContext } from "../../store/contexts/sendMoneyContext";
-import { HANDLE_SEND_MONEY_CHANGE } from "../../store/actionTypes";
+import { HANDLE_SEND_MONEY_CHANGE, SET_PAYMENT_METHODS } from "../../store/actionTypes";
 import globalStyles from "../../styles";
 import theme from "../../Theme";
 import config from "../../config";
@@ -18,7 +18,6 @@ import config from "../../config";
 const { SERVER_BASE_URL } = config;
 
 const { COLORS } = theme;
-const windowWidth = Dimensions.get("window").width;
 
 const SendForm = (props) => {
   const { next, saveState } = props;
@@ -28,11 +27,25 @@ const SendForm = (props) => {
   } = useContext(GlobalContext);
 
   const {
-    state: { fxRate, sendingCurrency, receivingCurrency, inlcudeFee },
+    state: {
+      fxRate,
+      sendingCurrency,
+      receivingCurrency,
+      includeFee,
+      youSend,
+      paymentMethod,
+      paymentMethods,
+      ourFee,
+      processingFee,
+    },
     dispatch,
   } = useContext(SendMoneyContext);
 
   const { control, errors, setValue, getValues } = useFormContext();
+
+  useEffect(() => {
+    dispatch({ type: SET_PAYMENT_METHODS, payload: { sendingCurrency } });
+  }, [sendingCurrency, dispatch]);
 
   const onChangeHandler = useCallback(
     (name, value) => {
@@ -45,17 +58,75 @@ const SendForm = (props) => {
   useEffect(() => {
     try {
       const getFxRate = async () => {
-        const data = await Axios.get(
+        const { data } = await Axios.get(
           `${SERVER_BASE_URL}/fxRate?sourceCurrency=${sendingCurrency}&quoteCurrency=${receivingCurrency.split(" - ")[0]}`
         );
         onChangeHandler("fxRate", data);
-        onChangeHandler("benefGets", sendingCurrency * data);
+        const recValue = includeFee ? youSend * data + Number(ourFee) + Number(processingFee) : youSend * data;
+        onChangeHandler("benefGets", recValue.toFixed(2).toString());
       };
       getFxRate();
     } catch (e) {
-      Alert("Something went wrong.");
+      Alert.alert("Error", "Something went wrong", [{ text: "OK" }], { cancelable: false });
     }
-  }, [onChangeHandler, sendingCurrency, receivingCurrency]);
+  }, [onChangeHandler, sendingCurrency, receivingCurrency, youSend, includeFee, ourFee, processingFee]);
+
+  useEffect(() => {
+    let fee;
+    switch (sendingCurrency) {
+      case "zar":
+        if (youSend > 0 && youSend <= 50) {
+          fee = 20;
+          break;
+        } else if (youSend > 50 && youSend <= 7500) {
+          fee = 80;
+          break;
+        } else {
+          fee = youSend * (1.5 / 100);
+          break;
+        }
+      default:
+        if (youSend > 0 && youSend <= 50) {
+          fee = 0;
+          break;
+        } else if (youSend > 50 && youSend <= 7500) {
+          fee = 4.99;
+          break;
+        } else {
+          fee = youSend * (1 / 100);
+          break;
+        }
+    }
+    onChangeHandler("ourFee", fee.toFixed(1));
+  }, [sendingCurrency, onChangeHandler, youSend]);
+
+  useEffect(() => {
+    let procFee;
+    switch (paymentMethod) {
+      case "E-Mail payment":
+        if (youSend > 0 && youSend < 799) {
+          procFee = 0;
+          break;
+        } else {
+          procFee = 1;
+          break;
+        }
+      case "INTERAC online":
+        if (youSend > 0 && youSend < 799) {
+          procFee = 0;
+          break;
+        } else {
+          procFee = 1;
+          break;
+        }
+      case "Debit/credit card":
+        procFee = Number(youSend) * 0.045;
+        break;
+      default:
+        procFee = 0;
+    }
+    onChangeHandler("processingFee", procFee.toFixed(1));
+  }, [paymentMethod, onChangeHandler, youSend]);
 
   const nextStep = () => {
     // Save state for use in other steps
@@ -95,24 +166,16 @@ const SendForm = (props) => {
           onChange={(value) => onChangeHandler("sendingCurrency", value)}
           requiredMessage="Please select a sending currency"
         />
-        <View
-          style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
-            borderBottomWidth: 1,
-            borderBottomColor: COLORS.inputBorderColor,
-          }}
-        >
+        <View style={styles.fxRateContainer}>
           <CustomCheckbox
-            checked={inlcudeFee}
-            onPress={() => onChangeHandler("includeFee", !inlcudeFee)}
-            lable="Include fee"
+            checked={includeFee}
+            onPress={() => onChangeHandler("includeFee", !includeFee)}
+            label="Include fee"
             control={control}
             errors={errors}
             name="includeFee"
           />
-          <Text style={{ ...globalStyles.textDanger, flexGrow: 0 }}>{`Fx Rate: ${Number(fxRate).toFixed(4)}`}</Text>
+          <Text style={globalStyles.textDanger}>{`Fx Rate: ${Number(fxRate).toFixed(4)}`}</Text>
         </View>
         <CustomTextInput
           control={control}
@@ -137,8 +200,19 @@ const SendForm = (props) => {
           name="receivingCurrency"
           label={globalCountries.length ? "Receiving currency" : "Loading receiving currencies"}
           selectedValue={receivingCurrency}
-          onChange={(value) => onChangeHandler("sendingCurrency", value)}
+          onChange={(value) => onChangeHandler("receivingCurrency", value)}
           requiredMessage="Please select a receiving currency"
+        />
+        <CustomSelectInput
+          iosHeader="Select a payment method"
+          items={paymentMethods.map((method) => ({ name: method, id: method }))}
+          control={control}
+          errors={errors}
+          name="paymentMethod"
+          label="Payment method"
+          selectedValue={paymentMethod}
+          onChange={(value) => onChangeHandler("paymentMethod", value)}
+          requiredMessage="Please select a payment method"
         />
         <CustomTextInput
           control={control}
@@ -155,28 +229,34 @@ const SendForm = (props) => {
               <Icon style={styles.detailKeyIcon} name="chevrons-right" type="Feather" />
               <Text>Our fee</Text>
             </View>
-            <Text style={styles.detailValue}>4.5 CAD</Text>
+            <Text style={styles.detailValue}>{`${ourFee} ${sendingCurrency.toUpperCase()}`}</Text>
           </View>
           <View style={styles.detail}>
             <View style={styles.detailKey}>
               <Icon style={styles.detailKeyIcon} name="chevrons-right" type="Feather" />
               <Text>Fee</Text>
             </View>
-            <Text style={styles.detailValue}>1.0 CAD</Text>
+            <Text style={styles.detailValue}>{`${processingFee} ${sendingCurrency.toUpperCase()}`}</Text>
           </View>
           <View style={styles.detail}>
             <View style={styles.detailKey}>
               <Icon style={styles.detailKeyIcon} name="chevrons-right" type="Feather" />
               <Text>Total fee</Text>
             </View>
-            <Text style={styles.detailValue}>5.5 CAD</Text>
+            <Text style={styles.detailValue}>
+              {`${Number(ourFee) + Number(processingFee)} ${sendingCurrency.toUpperCase()}`}
+            </Text>
           </View>
           <View style={styles.detail}>
             <View style={styles.detailKey}>
               <Icon style={styles.detailKeyIcon} name="chevrons-right" type="Feather" />
               <Text>Amount to be charged</Text>
             </View>
-            <Text style={styles.detailValue}>100 CAD</Text>
+            <Text style={styles.detailValue}>
+              {`${
+                includeFee ? youSend : Number(youSend) + Number(ourFee) + Number(processingFee)
+              } ${sendingCurrency.toUpperCase()}`}
+            </Text>
           </View>
         </View>
       </View>
@@ -186,20 +266,27 @@ const SendForm = (props) => {
 };
 
 const styles = StyleSheet.create({
+  fxRateContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    borderBottomWidth: 1,
+    borderBottomColor: COLORS.inputBorderColor,
+    marginBottom: 4,
+  },
   detailsSection: {
     backgroundColor: COLORS.DEFAULT,
     alignItems: "center",
     justifyContent: "center",
-    width: windowWidth,
     paddingVertical: 30,
+    paddingHorizontal: 20,
   },
   detailsContainer: {
     borderRadius: 30,
     backgroundColor: COLORS.WHITE,
-    width: windowWidth - 40,
     alignItems: "center",
     justifyContent: "center",
-    paddingTop: 20,
+    paddingTop: 16,
     paddingBottom: 40,
     paddingHorizontal: 20,
     ...globalStyles.shadow1,

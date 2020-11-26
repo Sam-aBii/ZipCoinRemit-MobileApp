@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import { StyleSheet } from "react-native";
 import { Container, Content, Card, CardItem, Body, Text, Thumbnail } from "native-base";
 import { View } from "react-native-animatable";

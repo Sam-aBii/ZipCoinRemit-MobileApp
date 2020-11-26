@@ -1,28 +1,17 @@
-import { handleBenefChange, selectBeneficiary, toggleBenefType } from "./sendFoodActions";
+import { pullAll } from "lodash";
 
-export const getBenefCountry = (state, action) => ({
-  ...state,
-  benefCountry: action.payload,
-});
+const handleSendMoneyChange = (state, action) => {
+  const { name, value } = action.payload;
+  return { ...state, [name]: value };
+};
 
-export const getBenefCountryFail = (state, action) => ({
-  ...state,
-  error: action.payload,
-});
+const setPaymentMethods = (state, action) => {
+  const { sendingCurrency } = action.payload;
+  const newMethods = ["E-Mail payment", "INTERAC online", "ZipWallet", "Debit/credit card"];
+  if (sendingCurrency !== "cad") {
+    return { ...state, paymentMethods: pullAll(newMethods, ["INTERAC online", "E-Mail payment"]) };
+  }
+  return { ...state, paymentMethods: newMethods };
+};
 
-export const setCountryStates = (state, action) => ({
-  ...state,
-  benefStates: action.payload,
-});
-
-export const setStateCities = (state, action) => ({
-  ...state,
-  benefCities: action.payload,
-});
-
-export const setStateCitiesFail = (state, action) => ({
-  ...state,
-  error: action.payload,
-});
-
-export { handleBenefChange, selectBeneficiary, toggleBenefType };
+export { handleSendMoneyChange, setPaymentMethods };

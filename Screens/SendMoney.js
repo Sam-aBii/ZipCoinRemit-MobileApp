@@ -23,10 +23,10 @@ const SendMoney = ({ navigation }) => {
     resolver: useYupValidationResolver(validationSchema),
     mode: "all",
     defaultValues: {
-      youSend: null,
-      sendingCurrency: null,
+      youSend: "100",
+      sendingCurrency: "cad",
       benefGets: null,
-      receivingCurrency: null,
+      receivingCurrency: "GHS - Ghana",
       includeFee: false,
       promoCode: null,
     },
