@@ -12,9 +12,10 @@ const initialState = {
   promoCode: "",
   ourFee: 4.99,
   processingFee: 0,
+  paymentMethods: ["ZipWallet", "Debit/credit card"],
+  beneficiary: "benef2",
   reason: "Family maintanence",
   relation: "Parent",
-  paymentMethods: ["ZipWallet", "Debit/credit card"],
 };
 
 const reducer = (state, action) => {

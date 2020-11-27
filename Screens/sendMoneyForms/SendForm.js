@@ -37,6 +37,7 @@ const SendForm = (props) => {
       paymentMethods,
       ourFee,
       processingFee,
+      promoCode,
     },
     dispatch,
   } = useContext(SendMoneyContext);
@@ -148,6 +149,7 @@ const SendForm = (props) => {
           requiredMessage="Please enter sending amount"
           setValue={onChangeHandler}
           keyboardType="decimal-pad"
+          value={youSend.toString()}
         />
         <CustomSelectInput
           iosHeader="Select a sending currency"
@@ -220,6 +222,7 @@ const SendForm = (props) => {
           label="Promo code(Optional)"
           errors={errors}
           setValue={onChangeHandler}
+          value={promoCode}
         />
       </View>
       <View style={styles.detailsSection}>

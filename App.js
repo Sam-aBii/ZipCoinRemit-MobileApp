@@ -2,7 +2,7 @@
 import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import { View } from "react-native";
+import { Alert, LogBox, View } from "react-native";
 import * as Font from "expo-font";
 import axios from "axios";
 import { ActivityIndicator } from "react-native-paper";
@@ -29,6 +29,8 @@ function App() {
 
   const [globalState, globalDispatch] = useReducer(globalReducer, globalInitialState);
 
+  LogBox.ignoreLogs(["Non-serializable values were found in the navigation state"]);
+
   useEffect(() => {
     const loadFonts = async () => {
       await Font.loadAsync({
@@ -41,14 +43,18 @@ function App() {
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const { data: countries } = await axios.get(`${SERVER_BASE_URL}/countries`);
-      globalDispatch({
-        type: GET_GLOBAL_COUNTRIES_INFO,
-        payload: countries,
-      });
-    };
-    fetchData();
+    try {
+      const fetchData = async () => {
+        const { data: countries } = await axios.get(`${SERVER_BASE_URL}/countries`);
+        globalDispatch({
+          type: GET_GLOBAL_COUNTRIES_INFO,
+          payload: countries,
+        });
+      };
+      fetchData();
+    } catch (e) {
+      Alert.alert("Error", "Something went wrong", [{ text: "OK" }], { cancelable: true });
+    }
   }, []);
 
   if (loadingAssets)

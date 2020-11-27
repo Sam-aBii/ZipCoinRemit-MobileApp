@@ -19,7 +19,7 @@ import globalStyles from "../../styles";
 
 const { SERVER_BASE_URL } = config;
 
-const AddABeneficiary = ({ navigation }) => {
+const AddABeneficiary = ({ navigation, route }) => {
   const {
     state: { countries: globalCountries },
   } = useContext(GlobalContext);
@@ -94,7 +94,7 @@ const AddABeneficiary = ({ navigation }) => {
         };
         fetchStates();
       } catch (e) {
-        Alert("Something went wrong");
+        Alert.alert("Error", "Something went wrong", [{ text: "ok" }], { cancelable: true });
       }
     }
   }, [selectedCountry]);
@@ -110,7 +110,7 @@ const AddABeneficiary = ({ navigation }) => {
         };
         fetchCities();
       } catch (e) {
-        Alert("Something went wrong");
+        Alert.alert("Error", "Something went wrong", [{ text: "ok" }], { cancelable: true });
       }
     }
   }, [selectedCountry, selectedState]);
@@ -118,6 +118,7 @@ const AddABeneficiary = ({ navigation }) => {
   // eslint-disable-next-line
   const onSubmit = (data) => {
     // console.log(data);
+    route?.params?.onAddCallback?.();
   };
 
   return (

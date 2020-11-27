@@ -18,7 +18,7 @@ const NavigationButtons = ({ onPressNext, onPressBack, renderNext, renderBack })
         </View>
       )}
       {renderNext && (
-        <View style={styles.icon}>
+        <View style={{ ...styles.icon, marginLeft: "auto" }}>
           <TouchableOpacity onPress={onPressNext}>
             <Icon type="FontAwesome" name="chevron-circle-right" style={{ color: COLORS.SECONDARY, fontSize: 72 }} />
           </TouchableOpacity>
@@ -33,8 +33,8 @@ export default NavigationButtons;
 const styles = StyleSheet.create({
   iconsContainer: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    margin: 4,
+    justifyContent: "space-between",
+    marginVertical: 4,
   },
   icon: {
     margin: 4,
