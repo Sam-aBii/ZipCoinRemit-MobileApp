@@ -45,12 +45,13 @@ const styles = StyleSheet.create({
   textDanger: { color: COLORS.DANGER },
   sendMoneyFormTitle: {
     fontSize: 24,
-    borderBottomWidth: 1,
     textAlign: "center",
-    paddingBottom: 4,
+    paddingVertical: 4,
     color: COLORS.DEFAULT,
     borderColor: COLORS.DEFAULT,
-    marginBottom: 4,
+    marginBottom: 8,
+    backgroundColor: COLORS.WHITE,
+    marginTop: 8,
   },
   shadow1: {
     shadowColor: COLORS.BLACK,

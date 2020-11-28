@@ -35,10 +35,10 @@ const SendMoney = ({ navigation, route }) => {
   });
 
   const allSteps = [
-    { name: "review", component: ReviewForm },
     { name: "send", component: SendForm },
     { name: "receive", component: ReceiveForm },
     { name: "reason", component: ReasonForm },
+    { name: "review", component: ReviewForm },
     { name: "checkout", component: CheckoutForm },
   ];
   // scroll to the step if coming from another screen. E.g in second step we may be routed to add beneficiary screen to come back direct to second step from add beneficiary screen this function will do the job.
