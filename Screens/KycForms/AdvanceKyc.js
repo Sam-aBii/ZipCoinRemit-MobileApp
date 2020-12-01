@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState, useMemo } from "react";
 import { Form, Text, Button, Content, Textarea, ListItem, CheckBox, Body, Picker, Icon } from "native-base";
 import { View, StyleSheet, ScrollView, Alert } from "react-native";
 import { useForm } from "react-hook-form";
-
 import Axios from "axios";
 
 import CustomHeader from "../../components/shared/Header";
@@ -14,11 +13,9 @@ import { beneficiarySchema } from "../../utils/yupFormSchemas";
 import config from "../../config";
 import CustomPhoneInput from "../../components/shared/PhoneInput";
 import globalStyles from "../../styles";
+import theme from "../../Theme";
 
-import Typograpghy from "../../Theme";
-
-const { COLORS } = Typograpghy;
-
+const { COLORS } = theme;
 const { SERVER_BASE_URL } = config;
 
 const AdvanceKyc = ({ navigation }) => {

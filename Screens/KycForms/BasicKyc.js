@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState, useMemo } from "react";
 import { Form, Text, Button, Content, Textarea, ListItem, CheckBox, Body, Picker, Icon } from "native-base";
 import { View, StyleSheet, ScrollView, Alert } from "react-native";
 import { useForm } from "react-hook-form";
-
 import Axios from "axios";
 
 import CustomHeader from "../../components/shared/Header";
@@ -11,14 +10,12 @@ import useYupValidationResolver from "../../utils/useYupValidationResolver";
 import CustomPicker from "../../components/shared/SelectInput";
 import { GlobalContext } from "../../store/contexts/globalContext";
 import { beneficiarySchema } from "../../utils/yupFormSchemas";
-import config from "../../config";
 import CustomPhoneInput from "../../components/shared/PhoneInput";
+import config from "../../config";
 import globalStyles from "../../styles";
+import theme from "../../Theme";
 
-import Typograpghy from "../../Theme";
-
-const { COLORS } = Typograpghy;
-
+const { COLORS } = theme;
 const { SERVER_BASE_URL } = config;
 
 const BasicKyc = ({ navigation }) => {
@@ -67,7 +64,7 @@ const BasicKyc = ({ navigation }) => {
         };
         fetchStates();
       } catch (e) {
-        Alert("Something went wrong");
+        Alert.alert("Error", "Something went wrong", [{ text: "ok" }], { cancelable: true });
       }
     }
   }, [selectedCountry]);
@@ -83,7 +80,7 @@ const BasicKyc = ({ navigation }) => {
         };
         fetchCities();
       } catch (e) {
-        Alert("Something went wrong");
+        Alert.alert("Error", "Something went wrong", [{ text: "ok" }], { cancelable: true });
       }
     }
   }, [selectedCountry, selectedState]);

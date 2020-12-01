@@ -22,7 +22,7 @@ const SplashScreen = ({ navigation }) => (
     </View>
     <Animatable.View animation="fadeInUpBig" style={styles.footer}>
       <Text style={styles.title}>Stay Connected</Text>
-      <Text style={styles.text}>Send Money Online with comfort of your own home 24 * 7</Text>
+      <Text style={styles.text}>Send money online from the comfort of your own home 24 &#215; 7</Text>
       <TouchableOpacity>
         <Button
           block

@@ -1,15 +1,23 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Platform } from "react-native";
+import React, { useState, useContext } from "react";
+import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Platform, Alert } from "react-native";
 import { Button } from "native-base";
 import * as Animatable from "react-native-animatable";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
 import Feather from "react-native-vector-icons/Feather";
+import Axios from "axios";
 
 import Typograpghy from "../Theme";
+import config from "../config";
+import { AuthContext } from "../store/contexts/authContext";
+import { LOG_IN } from "../store/actionTypes";
+
+const { SERVER_BASE_URL } = config;
 
 const { COLORS } = Typograpghy;
 
 const SignInScreen = ({ navigation }) => {
+  const { dispatch } = useContext(AuthContext);
+
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -46,13 +54,26 @@ const SignInScreen = ({ navigation }) => {
       secureTextEntry: !data.secureTextEntry,
     });
   };
+
+  const signIn = async () => {
+    try {
+      const { data: userData } = await Axios.post(`${SERVER_BASE_URL}/auth/login`, {
+        email: data.email,
+        password: data.password,
+      });
+      await dispatch({ type: LOG_IN, payload: { tokens: userData.tokens } });
+    } catch (e) {
+      Alert.alert("error", "Something went wrong. Please try again.", null, { cancelable: true });
+    }
+  };
+
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={COLORS.DEFAULT} barStyle="light-content" />
       <View style={styles.header}>
         <Text style={styles.text_header}>Welcome</Text>
         <Text style={styles.text_header1}>Fast.Secure.Low Cost</Text>
-        <Text style={styles.text_header2}>`&quot;`A Service you can trust!`&quot;`</Text>
+        <Text style={styles.text_header2}>&quot;A Service you can trust&quot;</Text>
       </View>
       <Animatable.View animation="fadeInUp" style={styles.footer}>
         <Text style={styles.text_footer}>Email</Text>
@@ -91,7 +112,7 @@ const SignInScreen = ({ navigation }) => {
           </Animatable.View>
         </View>
         <View style={styles.button}>
-          <Button rounded block style={{ backgroundColor: COLORS.SECONDARY }}>
+          <Button rounded block style={{ backgroundColor: COLORS.SECONDARY }} onPress={signIn}>
             <Text style={{ color: COLORS.WHITE, fontWeight: "bold" }}>Sign In</Text>
           </Button>
         </View>
@@ -131,9 +152,9 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
-    justifyContent: "flex-end",
-    paddingHorizontal: 20,
-    paddingBottom: 50,
+    justifyContent: "center",
+    marginBottom: 50,
+    alignItems: "center",
   },
   footer: {
     flex: 3,
@@ -147,18 +168,15 @@ const styles = StyleSheet.create({
     color: COLORS.WHITE,
     fontWeight: "bold",
     fontSize: 30,
-    marginStart: 90,
   },
   text_header1: {
     color: COLORS.WHITE,
     fontSize: 18,
     paddingBottom: 2,
-    marginStart: 70,
   },
   text_header2: {
     color: COLORS.SECONDARY,
     fontSize: 15,
-    marginStart: 73,
   },
   text_footer: {
     color: COLORS.DEFAULT,

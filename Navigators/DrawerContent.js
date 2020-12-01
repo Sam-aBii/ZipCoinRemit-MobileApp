@@ -1,11 +1,16 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from "react";
+import React, { useContext } from "react";
 import { View, StyleSheet } from "react-native";
 import { Avatar, Title, Caption, Drawer } from "react-native-paper";
 import { DrawerContentScrollView, DrawerItem } from "@react-navigation/drawer";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
+import { AuthContext } from "../store/contexts/authContext";
+import { SIGN_OUT } from "../store/actionTypes";
+
 const DrawerContent = (props) => {
+  const { dispatch } = useContext(AuthContext);
+
   return (
     <View style={{ flex: 1 }}>
       <DrawerContentScrollView {...props}>
@@ -89,7 +94,10 @@ const DrawerContent = (props) => {
         <DrawerItem
           icon={({ color, size }) => <MaterialCommunityIcons name="exit-to-app" color={color} size={size} />}
           label="Sign Out"
-          onPress={() => {}}
+          onPress={() => {
+            props.navigation.closeDrawer();
+            dispatch({ type: SIGN_OUT });
+          }}
         />
       </Drawer.Section>
     </View>

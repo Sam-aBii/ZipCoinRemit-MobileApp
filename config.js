@@ -1,3 +1,4 @@
-const SERVER_BASE_URL = "https://limitless-harbor-18570.herokuapp.com/v1/";
+/* eslint-disable import/no-unresolved */
+import { SERVER_BASE_URL } from "@env";
 
 export default { SERVER_BASE_URL };
